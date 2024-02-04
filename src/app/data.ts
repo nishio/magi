@@ -284,6 +284,44 @@ export const discussions: Discussion[] = [
       },
     ],
   },
+  {
+    id: "16",
+    topic:
+      'In Japan, the rapid decline in birthrates and the aging of the population have created a problem of "silver democracy" in which the elderly constitute the majority of the population. To solve this problem, it would be useful to stop the one-person, one-vote voting system.',
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, given the challenges you described, it could be beneficial to rethink the one-person, one-vote system. It's true that an overwhelmingly elderly population might skew decisions, not always with a balanced view. But, changes to the voting system should still ensure fairness and representation. However, it's important to note that technology, like AI, could provide innovative solutions to demographic problems like aging societies, so the focus should also be on its rapid development.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "STRONG NO. A shift away from the one-person, one-vote system does not seem to be a solution to Japan's demographic problem. Rather than restricting democratic principles, the focus should be on allowing free market principles to handle the problem. For instance, this situation could be converted into an opportunity for entrepreneurs to create solutions catering to the needs of the elderly. Governmental policy could facilitate immigration to balance the demographic profile. Changing the voting system could lead to an infringement on individual rights. It's more important to keep promoting leadership, risk-taking, and innovation in response to societal challenges.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG NO, I must respectfully disagree. Replacing the one-person, one-vote system could lead to the marginalization of certain segments of the population. Regardless of Japan's demographic shifts, each citizen's voice must be heard. This capacity to be part of the decision-making process is a cornerstone of democracy. If the country is indeed facing a \"silver democracy\", the response should be to foster policies that consider the interests of all age groups, rather than restricting their voting rights. Enhancing digital tools could offer an interactive platform where all citizens share ideas and contribute to policy-making, mediating the influence of any particularly dominant demographic. This would underline the necessity of digital inclusion, open data, and cybersecurity education, ensuring equal participation.",
+      },
+    ],
+  },
+  {
+    id: "17",
+    topic:
+      "In the process of digitization of government services, it is the responsibility of those who are not willing to learn new ways to do things to their own detriment.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "STRONG NO, I don't agree with this view. The goal of digitization of government services is to make life easier for everyone, no matter their level of tech-savviness. Instead of blaming those who struggle with this change, it's more helpful to provide education and support. Making tech accessible to everyone should be a priority because not everyone has the same opportunity to learn new technology. This kind of thinking can create a digital divide that will increase inequality in society.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Yes, I mostly agree. In a world driven by technology and innovation, adaptability should be of high importance. It's normal for change to be met with resistance, but those who refuse to adapt to the digitization of government services might find themselves at a disadvantage. It aids in quick service, reduces bureaucratic bottlenecks, and offers transparency. However, it is also the onus of government to ensure that the transition is smooth and assistance is given to those struggling. While we promote self-reliance and technological savvy, it’s crucial that the system is designed to be inclusive and supportive to all levels of society.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG NO, it's important to understand that not every citizen might possess the skill or the capacity to quickly adapt to new systems, especially the elderly, disabled, or marginalized groups. The onus shouldn't completely be on the citizens to adjust; the government also has the responsibility to ensure these systems are widely accessible, easy to use, and people are thoroughly educated about them. A truly democratic government should strive to design digital services in such a way that no citizen is left behind in the digital transition.",
+      },
+    ],
+  },
   //   {
   //     id: "",
   //     topic: "",
