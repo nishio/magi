@@ -72,8 +72,8 @@ export default function Home() {
         Ideally, in the future, users will be able to pitch their topics of
         interest to multiple virtual personalities. For the sake of AI execution
         cost, I am currently showing the output executed at my end. If you have
-        have access to GPTs, you can try it yourself. If you get interesting
-        results, please share them with me!
+        access to GPTs, you can try it yourself. If you get interesting results,
+        please share them with me!
       </p>
       <h3 className="text-2xl font-semibold mt-4">GPTs you can use:</h3>
       <ul className="list-disc ml-4">
