@@ -50,59 +50,39 @@ const Consensus = ({ discussion }: { discussion: Discussion }) => {
   // if all is positive
   if (vs.every((v) => v > 0)) {
     return (
-      <div>
-        <div className="text-center">
-          <div className="bg-green-500 p-2">
-            <p>Consensus: Yes</p>
-          </div>
-        </div>
+      <div className="text-center bg-green-500 p-2 border">
+        <p>Consensus: Yes</p>
       </div>
     );
   }
   // if all is negative
   if (vs.every((v) => v < 0)) {
     return (
-      <div>
-        <div className="text-center">
-          <div className="bg-red-500 p-2">
-            <p>Consensus: No</p>
-          </div>
-        </div>
+      <div className="text-center bg-red-500 p-2 border">
+        <p>Consensus: No</p>
       </div>
     );
   }
   // if all is positive or neutral
   if (vs.every((v) => v >= 0)) {
     return (
-      <div>
-        <div className="text-center">
-          <div className="bg-green-900 p-2">
-            <p>Consensus: Weak Yes</p>
-          </div>
-        </div>
+      <div className="text-center bg-green-900 p-2 border">
+        <p>Consensus: Weak Yes</p>
       </div>
     );
   }
   // if all is negative or neutral
   if (vs.every((v) => v <= 0)) {
     return (
-      <div>
-        <div className="text-center">
-          <div className="bg-red-900 p-2">
-            <p>Consensus: Weak No</p>
-          </div>
-        </div>
+      <div className="text-center bg-red-900 p-2 border">
+        <p>Consensus: Weak No</p>
       </div>
     );
   }
   // else
   return (
-    <div>
-      <div className="text-center">
-        <div className="bg-gray-700 p-2">
-          <p>Not reaching a consensus</p>
-        </div>
-      </div>
+    <div className="text-center bg-gray-700 p-2 border">
+      <p>Not reaching a consensus</p>
     </div>
   );
 };
