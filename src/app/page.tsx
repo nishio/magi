@@ -1,5 +1,41 @@
+import { takeOpinion } from "@/lib/takeOpinion";
 import Image from "next/image";
 import Link from "next/link";
+import { Discussion, discussions } from "./data"; // Adjust the import path as necessary
+
+const YesNoSpan = ({ v }: { v: number }) => {
+  if (v === 2) {
+    return <span className="bg-green-500 px-1 mx-1">STRONG YES</span>;
+  } else if (v == 1) {
+    return <span className="bg-green-700 px-1 mx-1">Yes</span>;
+  } else if (v == 0) {
+    return <span className="bg-gray-700 px-1 mx-1">Neutral</span>;
+  } else if (v == -1) {
+    return <span className="bg-red-700 px-1 mx-1">No</span>;
+  } else if (v == -2) {
+    return <span className="bg-red-500 px-1 mx-1">STRONG NO</span>;
+  } else {
+    return <span className="bg-gray-700 px-1 mx-1">System Error</span>;
+  }
+};
+
+const Discussions = () => {
+  const listItems = discussions.map((discussion) => (
+    <li key={discussion.id}>
+      <Link
+        href={`/d/${discussion.id}`}
+        className="text-blue-300 hover:text-blue-500 underline"
+      >
+        {discussion.topic}
+      </Link>
+      <YesNoSpan v={takeOpinion(discussion.viewpoints[0].text).v} />
+      <YesNoSpan v={takeOpinion(discussion.viewpoints[1].text).v} />
+      <YesNoSpan v={takeOpinion(discussion.viewpoints[2].text).v} />
+    </li>
+  ));
+
+  return <ul className="list-disc ml-4">{listItems}</ul>;
+};
 
 export default function Home() {
   return (
@@ -69,18 +105,7 @@ export default function Home() {
         </ul>
 
         <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
-
-        <ul className="list-disc ml-4">
-          <li>
-            <Link
-              href="/d/1"
-              className="text-blue-300 hover:text-blue-500 underline"
-            >
-              Businesses can solve social problems more efficiently than
-              governments.
-            </Link>
-          </li>
-        </ul>
+        <Discussions />
 
         <h2
           className="text-4xl font-bold mt-4"

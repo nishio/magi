@@ -3,21 +3,7 @@ import { useRouter } from "next/router";
 import { Discussion, discussions } from "../../app/data"; // Adjust the import path as necessary
 
 import "../../app/globals.css";
-
-const takeOpinion = (text: string) => {
-  if (text.startsWith("STRONG YES")) {
-    return { v: 2, text: "STRONG YES" };
-  } else if (text.startsWith("Yes")) {
-    return { v: 1, text: "Yes" };
-  } else if (text.startsWith("Neutral")) {
-    return { v: 0, text: "Neutral" };
-  } else if (text.startsWith("No")) {
-    return { v: -1, text: "No" };
-  } else if (text.startsWith("STRONG NO")) {
-    return { v: -2, text: "STRONG NO" };
-  }
-  return { v: 0, text: "System Error" };
-};
+import { takeOpinion } from "../../lib/takeOpinion";
 
 const YesNo = ({ v }: { v: number }) => {
   if (v === 2) {
@@ -60,15 +46,62 @@ const YesNo = ({ v }: { v: number }) => {
 };
 
 const Consensus = ({ discussion }: { discussion: Discussion }) => {
+  const vs = discussion.viewpoints.map((v) => takeOpinion(v.text).v);
+  // if all is positive
+  if (vs.every((v) => v > 0)) {
+    return (
+      <div>
+        <div className="text-center">
+          <div className="bg-green-500 p-2">
+            <p>Consensus: Yes</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // if all is negative
+  if (vs.every((v) => v < 0)) {
+    return (
+      <div>
+        <div className="text-center">
+          <div className="bg-red-500 p-2">
+            <p>Consensus: No</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // if all is positive or neutral
+  if (vs.every((v) => v >= 0)) {
+    return (
+      <div>
+        <div className="text-center">
+          <div className="bg-green-900 p-2">
+            <p>Consensus: Weak Yes</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // if all is negative or neutral
+  if (vs.every((v) => v <= 0)) {
+    return (
+      <div>
+        <div className="text-center">
+          <div className="bg-red-900 p-2">
+            <p>Consensus: Weak No</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // else
   return (
     <div>
       <div className="text-center">
         <div className="bg-gray-700 p-2">
           <p>Not reaching a consensus</p>
         </div>
-        {/* <div className="bg-green-900 p-2">
-              <p>Consensus: Yes</p>
-            </div> */}
       </div>
     </div>
   );
@@ -76,7 +109,7 @@ const Consensus = ({ discussion }: { discussion: Discussion }) => {
 
 const BackToTop = () => {
   return (
-    <div className="text-center mt-4">
+    <div className="text-center mt-4 md:hidden">
       <a
         href="#top"
         className="hover:underline flex justify-center items-center"
