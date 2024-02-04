@@ -116,26 +116,174 @@ export const discussions: Discussion[] = [
     ],
   },
 
-  //   {
-  //     id: "7",
-  //     topic:
-  //       "Using artificial intelligence technology to automate the government's decision-making process would make decision-making more efficient and fair",
-  //     viewpoints: [
-  //       {
-  //         name: "Synthetic Technocracy",
-  //         text: "Yes. Incorporating artificial intelligence (AI) into government decision-making can enhance both efficiency and fairness. AI can process and analyze vast amounts of data faster than humans, enabling quicker decisions on complex issues. It can also identify patterns and insights that might be missed by human analysts, leading to more informed decisions. Moreover, AI has the potential to reduce human biases in decision-making processes, promoting fairness. However, it's crucial to ensure that the AI systems themselves are transparent, accountable, and free from biases embedded in their algorithms. Proper oversight and continuous evaluation are necessary to ensure that the use of AI in government decision-making achieves its intended benefits without unintended consequences.",
-  //       },
-  //       {
-  //         name: "Corporate Libertarianism",
-  //         text: "Neutral. Artificial intelligence can certainly add efficiency and potentially reduce biases in data analysis and processing, making some aspects of government decision-making more streamlined and possibly fairer. However, the fairness and efficiency of AI-driven decisions heavily depend on the data it's trained on and the algorithms' design. If these elements reflect existing biases or are not transparent, the outcome could unintentionally perpetuate or amplify unfairness. Moreover, critical decisions involving ethical considerations, value judgments, and nuanced understanding of social contexts may not be suitably handled by AI alone. It's crucial to balance AI's use with human oversight to ensure decisions are both fair and aligned with societal values.",
-  //       },
-  //       {
-  //         name: "Digital Democracy",
-  //         text: "",
-  //       },
-  //     ],
-  //   },
-
+  {
+    id: "7",
+    topic:
+      "Using artificial intelligence technology to automate the government's decision-making process would make decision-making more efficient and fair",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes. Incorporating artificial intelligence (AI) into government decision-making can enhance both efficiency and fairness. AI can process and analyze vast amounts of data faster than humans, enabling quicker decisions on complex issues. It can also identify patterns and insights that might be missed by human analysts, leading to more informed decisions. Moreover, AI has the potential to reduce human biases in decision-making processes, promoting fairness. However, it's crucial to ensure that the AI systems themselves are transparent, accountable, and free from biases embedded in their algorithms. Proper oversight and continuous evaluation are necessary to ensure that the use of AI in government decision-making achieves its intended benefits without unintended consequences.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Neutral. Artificial intelligence can certainly add efficiency and potentially reduce biases in data analysis and processing, making some aspects of government decision-making more streamlined and possibly fairer. However, the fairness and efficiency of AI-driven decisions heavily depend on the data it's trained on and the algorithms' design. If these elements reflect existing biases or are not transparent, the outcome could unintentionally perpetuate or amplify unfairness. Moreover, critical decisions involving ethical considerations, value judgments, and nuanced understanding of social contexts may not be suitably handled by AI alone. It's crucial to balance AI's use with human oversight to ensure decisions are both fair and aligned with societal values.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "No, relying solely on artificial intelligence for government decision-making might not necessarily make the process more fair or efficient. While AI can handle high volume tasks and process data efficiently, it is incapable of empathic understanding or applying social context in decisions. Also, AI models are trained on past data, and hence, there's a risk of propagating past biases into future decisions. Further, removing human participation in decision-making goes against the principle of citizen participation and could alienize those citizens not satisfied with the outcomes. Government decisions should be a product of both efficient data processing systems and compassionate human judgment. The true potential of AI lies in assisting, not replacing, human capacity.",
+      },
+    ],
+  },
+  {
+    id: "8",
+    topic:
+      "Extensive data collection and analysis should be done to address social issues",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, data collection and analysis is a vital part of finding solutions to social issues. It helps us understand patterns and trends, and also identify the underlying causes of problems. However, the collection process should respect individuals' privacy rights and use data ethically, without infringing upon human dignity or freedom. Ultimately, sophisticated technology like AI should be used to make sense of the data and provide useful insights.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "No, data collection and analysis by itself isn't sufficient. Privacy is a fundamental right and its abuse for addressing social issues is a violation of this basic principle. Instead, creating an environment where entrepreneurship thrives can contribute more effectively to resolving social problems. Entrepreneurs identify issues within society and offer creative solutions, often benefitting people in need more directly and swiftly than data-driven government programs. Furthermore, it is important to consider that the free market, functioning with minimal interference, ensures that only truly beneficial services survive and thrive.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, with the stipulation that proper safeguards and transparency measures are put in place. Data collection and analysis can certainly help address social issues by providing insights and trends that might otherwise be missed. However, it's essential to ensure respect for privacy rights and to clearly communicate to the public what data is being collected, why it's being collected, how it's being used, and, perhaps most importantly, who has access to it. The process must be open and democratic, and mechanisms must be in place to prevent misuse of this data.",
+      },
+    ],
+  },
+  {
+    id: "9",
+    topic:
+      "International digital currencies increase economic efficiency and facilitate global trade",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, having an international digital currency could potentially lead to significant improvements in economic efficiency and global trade. Such a currency eliminates exchange rate variability, reduces transaction costs, and simplifies international transactions. Moreover, it can function as a global payment system for the Universal Basic Income, another core principle of Sam Altman's ideology. However, a careful design is necessary to mitigate risks of financial instability and illicit uses.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "STRONG YES. International digital currencies indeed enhance economic efficiency and bolster global trade. By providing a universal medium for transactions, they eliminate the need, time, and expense for currency exchange, thereby making transactions faster and cheaper. They also foster financial inclusion by offering access to economic transactions even for those who aren't part of traditional banking systems. Furthermore, their decentralised nature reduces the power of national governments to manipulate currency value and increase inflation. In line with the libertarian notion, such currencies increase individual freedom in financial matters.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, international digital currencies can indeed boost economic efficiency and facilitate global trade by making transactions faster, cheaper, and more seamless. However, it's crucial to ensure democratic participation in decisions concerning the implementation and regulation of these currencies. Transparency and inclusive digital literacy are essential to avoiding potential disparities and misuse. Nevertheless, the impact on national economies, cybersecurity, and privacy should be thoroughly assessed and openly debated.",
+      },
+    ],
+  },
+  {
+    id: "10",
+    topic: "Digital skills education should be mandatory for all citizens.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, digital skills education should be a requirement for all citizens. Providing adequate and quality digital skills education to everyone can increase the overall productivity of the society. As technology continues to evolve rapidly, the ability to understand and use it effectively is becoming increasingly essential. Furthermore, it will also help in reducing the digital divide among different demographics in our society, ensuring everyone can benefit from advancements in technology.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "No, though it may seem like a reasonable proposition, making digital skills education mandatory for all citizens infringes on individual freedom and choice. In a truly free society, it should be the individuals who decide what skills they want or need to learn. It's important for the government to not dictate what knowledge or skills are necessary or irrelevant. Instead of mandating, it would be more beneficial to foster an educational system that encourages curiosity, innovation, and adaptability, as these are the traits of successful entrepreneurs.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, digital skills education should indeed be mandatory for all citizens. However, the emphasis is on universal access, not compulsion. It is vital for the prosperity of society and the democratization of decision-making processes. The spread of digital skills empowers citizens to contribute meaningfully to public discourse, enables access to public data for informed decisions, and encourages digital inclusion. Moreover, cybersecurity education becomes essential in an increasingly connected world for safe navigation of the digital landscape. By ensuring universal accessibility to digital education, we can foster awareness, engagement, and contribution, rather than enforcing it as a compulsory condition.",
+      },
+    ],
+  },
+  {
+    id: "11",
+    topic: "All government documents should be released as open data.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, but with careful consideration. Open data can contribute to transparency, foster innovation, and increase civic engagement. However, not all government documents can be disclosed due to sensitive information that may compromise national security or privacy. A balance must be established to protect these vital aspects while promoting technological advancement and accountability.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "STRONG YES. Transparency in government affairs is integral for a well-functioning society. When government data is open, it allows citizens, journalists, and businesses to analyse, find inconsistencies, and make suggestions. This approach can stimulate creative solutions from unexpected angles, fostering a healthy entrepreneurial spirit. However, personal data and sensitive security details should be protected to prevent misuse and privacy breaches.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, with a caveat. Transparency in government affairs is paramount to build citizen engagement and trust. Releasing government documents as open data helps facilitate that. However, certain information may require restriction or careful anonymization to protect individual privacy and national security. With these precautions in place, making such data available would empower citizens to investigate, challenge, and corroborate government activity, leading to more accountable and responsive governance.",
+      },
+    ],
+  },
+  {
+    id: "12",
+    topic:
+      "A digital democracy platform should be created where citizens directly participate in government policy making.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "No, a digital democracy platform for direct citizen participation in policy-making isn't the optimal solution. While citizen involvement is important, too much democracy can lead to inefficiency. Specialized knowledge and swift decision-making often required in policy-making might be compromised if everyone gets a direct vote on every issue. More than that, there's potential for manipulation of such a platform. A balanced approach is necessary, where professionals are entrusted with decision-making and transparency mechanisms ensure their accountability to the public.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "No, I don't think that's the best course of action. The idea presents some obvious democratic appeal, but practical execution may lead to inefficacies. The principle of 'tyranny of the majority' could limit diverse viewpoints and risk-taking, both crucial for advancement. Also, not everyone has the knowledge to make informed decisions on policy intricacies; it's why we have elected experts. A digital democracy platform may seem inclusive but might ultimately slow down progress and stifle entrepreneurial spirit.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG YES. A digital democracy platform is crucial for meaningful citizen engagement. It ensures everyone has direct participation, influencing government policy-making processes. By providing a digital platform, we can enhance transparency, foster innovation, and ensure that the public's needs and voices shape policies. This methodology encourages mutual trust between the government and the people. Remember, however, that such a platform needs to be inclusive and accessible to all members of society, regardless of tech-savviness or socio-economic standing.",
+      },
+    ],
+  },
+  {
+    id: "13",
+    topic: "Government should not block certain services on the Internet.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "STRONG YES, my logic strongly agrees with this. The internet is a powerful tool for the free exchange of ideas and information. Blocking certain services on it would limit its potential and hinder the development of technology. It's very important to protect net neutrality, this means that the government cannot block or slow down content online. It guarantees people's right to freely communicate and express themselves online which directly influences technological innovation and democracy. But it's crucial to make sure the internet doesn't become a tool for harmful actions.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "STRONG YES, governmental control on Internet services is a limitation on freedom of information and can hamper entrepreneurial spirit. In a truly free market, it is the consumers who should decide the success or failure of internet services through competition, not regulatory bodies. Limitations can both slowdown innovation and harm the potential for new market players to emerge and offer better solutions.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG YES, restricting access to certain services on the Internet is against the principles of transparency and digital inclusion. Internet censorship compromises the ability of citizens to participate fully in the democratic process. By blocking certain services, it undermines open access to public data and information, thereby inhibiting informed decision-making and full citizen participation. Furthermore, it also constitutes an infringement on the freedom of speech and expression, which are key pillars of any democratic society. Therefore, the government should refrain from blocking certain services on the Internet.",
+      },
+    ],
+  },
+  {
+    id: "14",
+    topic:
+      "The use of open source software in government projects should be promoted",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, open-source software in government projects should indeed be encouraged. This approach promotes transparency and knowledge sharing, which ultimately speed up technological development. In addition, it allows for the input and scrutiny of a broader range of experts, which can add an additional layer of quality control and stimulate innovation. Keep in mind, it's not a magic bullet though, and expertise is still needed to oversee such projects and maintain best practices.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Yes, the use of open source software in government projects should be promoted. This approach aligns well with the principles of free market and competition. When software is open source, it encourages entrepreneurial spirit by allowing anyone to improve or innovate upon existing systems. This promotes a competition of ideas, fostering technological advancement and efficiency, as well as potentially saving government funds. Additionally, it reduces reliance on a single provider, reducing risks associated with monopoly control.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG YES, I completely agree. Adoption of open-source software in government projects keeps the decision-making process transparent and participatory. This software allows citizens to understand how their data is being used and contributes to the digital literacy of the population. Furthermore, open-source software encourages innovation as it allows anyone to contribute improvements, and it can be more cost-effective in the long run. It underscores an important principle of democratic technology: tools that are by the people, for the people.",
+      },
+    ],
+  },
+  {
+    id: "15",
+    topic:
+      "Governments should impose stricter privacy protection regulations on technology companies.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Neutral. Privacy protection is indeed important. Tech companies should adhere to rules that protect people's private information. However, stricter rules can pose a barrier to the development of new technologies. An appropriate balance should be the aim of any new regulations.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "No. Imposing stricter privacy regulations on technology companies may sound good, but it actually hinders innovation and growth. These regulations can create excess burdens on companies, reducing efficiency and slowing down progress. Privacy is indeed important, but it is the responsibility of every individual user to be cautious, and companies themselves should take the initiative to protect user information without unnecessary regulatory intervention. Tech giants could also face competition from smaller companies that promise better privacy, encouraging all to improve their policies. This is how the free market works best.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "STRONG YES, privacy protection is crucial in our increasingly digitized world. Strong regulations would enforce the responsible handling of users' information by technology companies. However, this should not discourage innovation. Therefore, public dialogue to find a balanced framework is essential. This reflects Audrey Tang's belief in citizen participation in government decision-making.",
+      },
+    ],
+  },
   //   {
   //     id: "",
   //     topic: "",
