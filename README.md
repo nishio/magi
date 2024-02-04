@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Plural Viewpoints
 
-## Getting Started
+## What is this?
+This is a tool that provides an opportunity for people to observe
+world from plural viewpoints. A single question posed by a human is
+answered by three virtual personalities with different ideologies.
 
-First, run the development server:
+There is a Japanese proverb that says, "[When three people gather, divine wisdom emerges.](https://scrapbox.io/nishio-en/When_three_people_gather,_devine_wisdom_emerges)"
+Good wisdom can be gained when three people with different
+perspectives come together to think.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to use
+(You can ask a question to the virtual personalities. The virtual
+personalities will answer your question from their own perspectives.
+You can also see the consensus of the virtual personalities.)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ideally, in the future, users will be able to pitch their topics of
+interest to multiple virtual personalities. For the sake of AI
+execution cost, I am currently showing the output executed at my end.
+If you have access to GPTs, you can try it yourself. If you get
+interesting results, please share them with me!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### GPTs you can use:
+- [ChatGPT - Synthetic Technocracy](https://chat.openai.com/g/g-UOUeqC8dJ-synthetic-technocracy)
+- [ChatGPT - Corporate Libertarianism](https://chat.openai.com/g/g-8jVsJ1tcW-corporate-libertarianism)
+- [ChatGPT - Digital Democracy](https://chat.openai.com/g/g-lRzyfvWfZ-digital-democracy)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Sample Discussions:
 
-## Learn More
+Visit the service [here](https://magi-nishio.vercel.app/).
 
-To learn more about Next.js, take a look at the following resources:
+## About Consensus
+This system does not use majority rule by voting. Consensus is reached
+when all three respondents are in the same direction, and weak
+consensus when some are neutral.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What is "Political Ideologies for the 21st Century"
+["Political Ideologies for the 21st Century"](https://www.radicalxchange.org/media/blog/political-ideologies-for-the-21st-century/)
+is a blog entry written by E. Glen Weyl. In this blog entry, he
+talks about three political ideologies that are emerging in the 21st
+century.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+I find this concept to be very valuable when thinking about the future
+of society, but on the other hand, I feel it's challenging to
+explain and make people understand it in words. That's why
+I'm creating this web service that people can experience.
 
-## Deploy on Vercel
+## What is "MAGI System"
+The ["MAGI System"](https://scrapbox.io/nishio-en/MAGI_System)
+is a fictional supercomputer system from the Japanese science
+fiction anime "Neon Genesis Evangelion." It consists of
+three independent but interconnected supercomputers, and each
+supercomputer represents a different aspect of human thought.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+It inspired me to create this web service.

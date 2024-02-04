@@ -107,6 +107,13 @@ export default function Home() {
         <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
         <Discussions />
 
+        <h2 className="text-4xl font-bold mt-4">About Consensus</h2>
+        <p>
+          This system does not use majority rule by voting. Consensus is reached
+          when all three respondents are in the same direction, and weak
+          consensus when some are neutral.
+        </p>
+
         <h2
           className="text-4xl font-bold mt-4"
           id="political-ideologies-for-the-21st-century"
@@ -152,6 +159,24 @@ export default function Home() {
           supercomputer represents a different aspect of human thought.
         </p>
         <p>It inspired me to create this web service.</p>
+
+        <h2 className="text-4xl font-bold mt-4">About the Author</h2>
+        <p>
+          <a
+            href="https://scrapbox.io/nishio-en/"
+            className="text-blue-300 hover:text-blue-500 underline"
+          >
+            NISHIO Hirokazu
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://github.com/nishio/magi"
+            className="text-blue-300 hover:text-blue-500 underline"
+          >
+            Source codes
+          </a>
+        </p>
       </div>
     </div>
   );
