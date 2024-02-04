@@ -322,6 +322,25 @@ export const discussions: Discussion[] = [
       },
     ],
   },
+  {
+    id: "18",
+    topic:
+      "Private social networking sites maintained by advertising revenue are inappropriate as a means of disseminating government information.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, advertising-driven private social networking sites are not ideal platforms for distributing government information. Such platforms are mainly designed to keep users engaged for longer to maximize ad revenue. This can lead to an environment abundant in sensational, but not necessarily accurate or important, content. In contrast, government information needs to be presented objectively and plainly, with a focus on accuracy and comprehensibility for all citizens. Additionally, private platforms can have different access and understanding levels across different groups, leading to inequality in information distribution. A publicly available and maintained system would better serve to broadcast such critical data.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "STRONG NO. Government information needs to be accessible to all citizens, and social networking sites provide a convenient, wide-reaching platform for disseminating such info. As these social media platforms are mainly financed by advertising revenues, they can provide this service without drawing off important government funds. The more decentralized the information distribution, the less control and potential for information manipulation by the government, aligning well with corporate libertarianism views. By partnering with private entities, the government can leverage their innovative strategies and reach without extra bureaucracy or costs.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, I agree that private social networking sites maintained by advertising revenue are inappropriate as a means of disseminating government information. Platforms driven by ad revenue may prioritize sensational or highly engaging content to maximize click-through rates, which could bias the dissemination of government information. Also, these private platforms can selectively control content based on their own algorithms and interests rather than impartiality, which contradicts the principles of transparency and inclusiveness in democratic communications. Thus, public platforms that do not rely on ad revenue and ensure equal access to all citizens would be more suitable for sharing government information.",
+      },
+    ],
+  },
   //   {
   //     id: "",
   //     topic: "",
