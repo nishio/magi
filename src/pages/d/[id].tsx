@@ -1,6 +1,7 @@
 // magi/src/pages/d/[id].tsx
 import { useRouter } from "next/router";
 import { Discussion, discussions } from "../../app/data"; // Adjust the import path as necessary
+import Head from "next/head";
 
 import "../../app/globals.css";
 import { takeOpinion } from "../../lib/takeOpinion";
@@ -126,70 +127,77 @@ const DiscussionPage = () => {
   if (!discussion) {
     return <div>Discussion not found</div>;
   }
-
+  const optexts = discussion.viewpoints.map((v) => takeOpinion(v.text).text);
+  const content = `${discussion.topic}[${optexts[0]}][${optexts[1]}][${optexts[2]}]`;
   return (
-    <div className="bg-slate-800 text-white min-h-screen">
-      <div className="md:mx-4 md:my-4">
-        <Navigation />
-        <div className="mt-2 p-4 bg-slate-700 rounded-lg shadow-lg">
-          <span className="block mb-1 text-sm text-gray-400 font-semibold">
-            Discussion Topic:
-          </span>
-          <p className="text-white font-medium">{discussion.topic}</p>
-        </div>
-        <div className="grid grid-cols-3 gap-4 mt-4">
-          <div className="text-center">
-            <a href="#detail-1" className="hover:underline">
-              <p>{discussion.viewpoints[0].name}</p>
-            </a>
-            <YesNo v={takeOpinion(discussion.viewpoints[0].text).v} />
+    <>
+      <Head>
+        <title>Plural Viewpoints</title>
+        <meta name="description" content={content} />
+      </Head>
+      <div className="bg-slate-800 text-white min-h-screen">
+        <div className="md:mx-4 md:my-4">
+          <Navigation />
+          <div className="mt-2 p-4 bg-slate-700 rounded-lg shadow-lg">
+            <span className="block mb-1 text-sm text-gray-400 font-semibold">
+              Discussion Topic:
+            </span>
+            <p className="text-white font-medium">{discussion.topic}</p>
           </div>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            <div className="text-center">
+              <a href="#detail-1" className="hover:underline">
+                <p>{discussion.viewpoints[0].name}</p>
+              </a>
+              <YesNo v={takeOpinion(discussion.viewpoints[0].text).v} />
+            </div>
 
-          <div className="text-center">
-            <a href="#detail-2" className="hover:underline">
-              <p>{discussion.viewpoints[1].name}</p>
-            </a>
-            <YesNo v={takeOpinion(discussion.viewpoints[1].text).v} />
+            <div className="text-center">
+              <a href="#detail-2" className="hover:underline">
+                <p>{discussion.viewpoints[1].name}</p>
+              </a>
+              <YesNo v={takeOpinion(discussion.viewpoints[1].text).v} />
+            </div>
+
+            <div className="text-center">
+              <a href="#detail-3" className="hover:underline">
+                <p>{discussion.viewpoints[2].name}</p>
+              </a>
+              <YesNo v={takeOpinion(discussion.viewpoints[2].text).v} />
+            </div>
           </div>
+          <Consensus discussion={discussion} />
+          <div className="mt-8">
+            <h2 className="text-2xl font-semibold" id="detail-1">
+              {discussion.viewpoints[0].name}
+            </h2>
+            <p className="text-sm text-gray-400">
+              {discussion.viewpoints[0].text}
+            </p>
 
-          <div className="text-center">
-            <a href="#detail-3" className="hover:underline">
-              <p>{discussion.viewpoints[2].name}</p>
-            </a>
-            <YesNo v={takeOpinion(discussion.viewpoints[2].text).v} />
+            <BackToTop />
+            <h2 className="text-2xl font-semibold mt-4" id="detail-2">
+              {discussion.viewpoints[1].name}
+            </h2>
+            <p className="text-sm text-gray-400">
+              {discussion.viewpoints[1].text}
+            </p>
+
+            <BackToTop />
+
+            <h2 className="text-2xl font-semibold mt-4" id="detail-3">
+              {discussion.viewpoints[2].name}
+            </h2>
+            <p className="text-sm text-gray-400">
+              {discussion.viewpoints[2].text}
+            </p>
           </div>
-        </div>
-        <Consensus discussion={discussion} />
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold" id="detail-1">
-            {discussion.viewpoints[0].name}
-          </h2>
-          <p className="text-sm text-gray-400">
-            {discussion.viewpoints[0].text}
-          </p>
-
           <BackToTop />
-          <h2 className="text-2xl font-semibold mt-4" id="detail-2">
-            {discussion.viewpoints[1].name}
-          </h2>
-          <p className="text-sm text-gray-400">
-            {discussion.viewpoints[1].text}
-          </p>
-
-          <BackToTop />
-
-          <h2 className="text-2xl font-semibold mt-4" id="detail-3">
-            {discussion.viewpoints[2].name}
-          </h2>
-          <p className="text-sm text-gray-400">
-            {discussion.viewpoints[2].text}
-          </p>
+          <hr className="border-gray-400" />
+          <Navigation />
         </div>
-        <BackToTop />
-        <hr className="border-gray-400" />
-        <Navigation />
       </div>
-    </div>
+    </>
   );
 };
 
