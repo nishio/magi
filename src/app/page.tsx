@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -71,13 +72,13 @@ export default function Home() {
 
         <ul className="list-disc ml-4">
           <li>
-            <a
+            <Link
               href="/d/1"
               className="text-blue-300 hover:text-blue-500 underline"
             >
               Businesses can solve social problems more efficiently than
               governments.
-            </a>
+            </Link>
           </li>
         </ul>
 
