@@ -124,7 +124,7 @@ const Navigation = () => {
   return (
     <nav className="flex flex-wrap items-center space-x-2 text-sm">
       <a href="/" className="hover:underline">
-        Plural Viewpoint
+        Plural Viewpoints
       </a>
       <span className="whitespace-nowrap">{">"}</span>
       <a
@@ -206,6 +206,7 @@ const DiscussionPage = () => {
           </p>
         </div>
         <BackToTop />
+        <hr className="border-gray-400" />
         <Navigation />
       </div>
     </div>
