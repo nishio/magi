@@ -11,6 +11,7 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore";
+import Link from "next/link";
 
 // make spinner component
 const Spinner = () => {
@@ -25,6 +26,7 @@ export default function AddTopic() {
   const [result, setResult] = React.useState("");
   const [key, setKey] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [url, setUrl] = React.useState("");
 
   useEffect(() => {
     setKey(localStorage.getItem("openai-api-key") || "");
@@ -48,21 +50,15 @@ export default function AddTopic() {
   };
 
   const saveToDatabase = async () => {
-    const obj =
-      JSON.parse(`{"id":"","topic":"Nations will be divided into smaller, overlapping communities.","viewpoints":[{"name":"Synthetic Technocracy","text":"Yes, nations being divided into smaller, overlapping communities can foster a sense of local identity and community engagement. It allows for more localized decision-making and involvement, which can lead to greater satisfaction and collaboration among community members. This approach encourages a sense of ownership and responsibility for the well-being of the community, promoting social cohesion and resilience. However, it is important to ensure that these communities are inclusive, diverse, and do not lead to the exclusion or marginalization of certain groups."},{"name":"Corporate Libertarianism","text":"No, nations should strive for unity and collaboration rather than division. Smaller, overlapping communities can lead to fragmentation and lack of cohesion among the people. It is important for nations to work together and establish common goals in order to foster stability and progress."},{"name":"Digital Democracy","text":"Yes, nations will be divided into smaller, overlapping communities. This decentralization of power and decision-making allows citizens to have a more direct say in matters that affect them. It fosters a sense of belonging and ownership over the decisions that shape their lives. Smaller communities also provide opportunities for localized solutions to unique challenges and promote inclusivity by ensuring that the diverse needs and voices of individuals are heard and represented. Overall, this shift towards smaller, overlapping communities can strengthen democracy and enable more effective governance."}]}
-`);
-    // if (!result) return;
+    if (!result) return;
+    const obj = JSON.parse(result);
     const firestore = getFirestore(app);
-    try {
-      obj.createdAt = serverTimestamp();
-      const docRef = await addDoc(collection(firestore, "topics"), obj);
+    obj.createdAt = serverTimestamp();
+    const docRef = await addDoc(collection(firestore, "topics"), obj);
 
-      console.log("Document written with ID: ", docRef.id);
-      const shareableUrl = `${window.location.origin}/d/${docRef.id}`;
-      console.log("Shareable URL: ", shareableUrl);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+    console.log("Document written with ID: ", docRef.id);
+    const shareableUrl = `/t/${docRef.id}`;
+    setUrl(shareableUrl);
   };
   return (
     <div className="bg-slate-800 text-white min-h-screen">
@@ -165,25 +161,16 @@ export default function AddTopic() {
             className="w-full p-2 mt-2 bg-gray-900"
             type="text"
             placeholder="URL to share"
+            defaultValue={url && window.location.origin + url}
           />
+          {url && (
+            <Link href={url}>
+              {window.location.origin}
+              {url}
+            </Link>
+          )}
         </div>
       </div>
     </div>
   );
 }
-/*
-    // <div className="p-5 border border-gray-300 rounded bg-gray-100">
-    //   send a question to the three virtual personalities, return JSON in PRE.
-    //   <textarea className="mb-5 p-2"></textarea>
-    //   <button
-    //     onClick={onClick}
-    //     className="p-4 bg-blue-500 text-white border-none rounded"
-    //   >
-    //     Submit
-    //   </button>
-    //   <pre className="mt-5 p-4 bg-white border border-gray-300 rounded">
-    //     {result}
-    //   </pre>
-    // </div>
-
-*/

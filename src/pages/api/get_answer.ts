@@ -3,7 +3,8 @@ import { Request, Response } from "express";
 import axios from "axios";
 const { OPENAI_API_KEY } = process.env;
 
-const model = "gpt-3.5-turbo"; // "gpt-4"
+// const model = "gpt-3.5-turbo"; // for local rapid test
+const model = "gpt-4";
 
 const call_gpt = async (system: string, prompt: string) => {
   const url = "https://api.openai.com/v1/chat/completions";
