@@ -3,8 +3,8 @@ import { Request, Response } from "express";
 import axios from "axios";
 const { OPENAI_API_KEY } = process.env;
 
-// const model = "gpt-3.5-turbo"; // for local rapid test
-const model = "gpt-4";
+const model = "gpt-3.5-turbo"; // for local rapid test
+// const model = "gpt-4";
 
 const call_gpt = async (system: string, prompt: string) => {
   const url = "https://api.openai.com/v1/chat/completions";
@@ -39,7 +39,7 @@ const prompts = [
 ];
 const handler = async (req: Request, res: Response) => {
   console.log("handler 1");
-  const { q } = JSON.parse(req.body);
+  const { q } = req.body;
   console.log("handler 2");
   const r1 = await call_gpt(prompts[0], q);
   console.log("handler 3");

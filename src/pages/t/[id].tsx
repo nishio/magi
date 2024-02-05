@@ -2,7 +2,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { app } from "@/lib/firestore_app";
 import {
   getFirestore,
   collection,
@@ -18,9 +17,12 @@ import { takeOpinion } from "../../lib/takeOpinion";
 import { Navigation } from "../../components/Navigation";
 import { DiscussionView } from "../../components/DiscussionView";
 import { Discussion } from "@/lib/data";
+import { firebaseConfig } from "@/lib/firestore_app";
+import { initializeApp } from "firebase/app";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as { params: { id: string } }[];
+  const app = initializeApp(firebaseConfig);
   const firestore = getFirestore(app);
   const querySnapshot = await getDocs(collection(firestore, "topics"));
   querySnapshot.forEach((doc) => {
@@ -40,7 +42,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = Array.isArray(id_) ? id_[0] : id_;
   // console.log({ id });
 
-  const firestore = getFirestore();
+  const app = initializeApp(firebaseConfig);
+  const firestore = getFirestore(app);
   const docRef = doc(firestore, "topics", id);
   // console.log(docRef);
   const docSnap = await getDoc(docRef);

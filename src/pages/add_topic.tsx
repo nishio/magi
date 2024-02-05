@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import "../app/globals.css";
 import { DiscussionView } from "@/components/DiscussionView";
 
-import { app } from "../lib/firestore_app";
+import { firebaseConfig } from "../lib/firestore_app";
 import {
   getFirestore,
   collection,
@@ -12,6 +12,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import Link from "next/link";
+import { initializeApp } from "firebase/app";
 
 // make spinner component
 const Spinner = () => {
@@ -55,6 +56,7 @@ export default function AddTopic() {
   const saveToDatabase = async () => {
     if (!result) return;
     const obj = JSON.parse(result);
+    const app = initializeApp(firebaseConfig);
     const firestore = getFirestore(app);
     obj.createdAt = serverTimestamp();
     const docRef = await addDoc(collection(firestore, "topics"), obj);
