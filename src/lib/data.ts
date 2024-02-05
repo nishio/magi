@@ -1,7 +1,7 @@
 export interface Discussion {
   topic: string;
   id: string;
-  viewpoints: any[];
+  viewpoints: { name: string; text: string }[];
 }
 
 export const discussions: Discussion[] = [
