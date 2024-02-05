@@ -1,0 +1,53 @@
+// read data from firestore
+import { useRouter } from "next/router";
+import { Discussion, discussions } from "../../lib/data"; // Adjust the import path as necessary
+import Head from "next/head";
+import { GetStaticProps, GetStaticPaths } from "next";
+
+import "../../app/globals.css";
+import { takeOpinion } from "../../lib/takeOpinion";
+import { Navigation } from "../../components/Navigation";
+import { DiscussionView } from "../../components/DiscussionView";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = discussions.map((discussion) => ({
+    params: { id: discussion.id },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id;
+  const discussion = discussions.find((d) => d.id === id);
+  if (!discussion) {
+    return { notFound: true };
+  }
+  return { props: { discussion } };
+};
+
+const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
+  const content = `${discussion.topic}[${discussion.viewpoints
+    .map((v) => takeOpinion(v.text).text)
+    .join("][")}]`;
+  return (
+    <>
+      <Head>
+        <title>Plural Viewpoints - {content}</title>
+        <meta name="description" content={content} />
+        <meta property="og:title" content={`Plural Viewpoints - ${content}`} />
+        <meta property="og:description" content={content} />
+        <meta property="og:type" content="article" />
+      </Head>
+      <div className="bg-slate-800 text-white min-h-screen">
+        <div className="md:mx-4 md:my-4">
+          <Navigation />
+          <DiscussionView discussion={discussion} />
+          <hr className="border-gray-400" />
+          <Navigation />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DiscussionPage;
