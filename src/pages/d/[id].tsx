@@ -56,22 +56,28 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
             {discussion.viewpoints.map((viewpoint, index) => (
               <div key={index} className="text-center">
                 <a href={`#detail-${index + 1}`} className="hover:underline">
-                  <p>{viewpoint.name}</p>
+                  <p className="text-lg md:text-xl">{viewpoint.name}</p>
                 </a>
                 <YesNo v={takeOpinion(viewpoint.text).v} />
               </div>
             ))}
           </div>
           <Consensus discussion={discussion} />
-          {discussion.viewpoints.map((viewpoint, index) => (
-            <div key={index} className="mt-8">
-              <h2 className="text-2xl font-semibold" id={`detail-${index + 1}`}>
-                {viewpoint.name}
-              </h2>
-              <p className="text-sm text-gray-400">{viewpoint.text}</p>
-              <BackToTop />
-            </div>
-          ))}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {discussion.viewpoints.map((viewpoint, index) => (
+              <div key={index} className="mt-8">
+                <h2
+                  className="text-2xl font-semibold"
+                  id={`detail-${index + 1}`}
+                >
+                  {viewpoint.name}
+                </h2>
+                <p className="text-gray-400">{viewpoint.text}</p>
+                <BackToTop />
+              </div>
+            ))}
+          </div>
           <hr className="border-gray-400" />
           <Navigation />
         </div>
