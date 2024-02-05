@@ -64,16 +64,14 @@ export default function Home() {
       </p>
       <h2 className="text-4xl font-bold mt-4">How to use</h2>
       <p>
-        (You can ask a question to the virtual personalities. The virtual
-        personalities will answer your question from their own perspectives. You
-        can also see the consensus of the virtual personalities.)
+        You can ask a question to three virtual personalities. The virtual
+        personalities will answer yes/no to your question from their own
+        perspectives. You can also see the consensus of the virtual
+        personalities.
       </p>
       <p>
-        Ideally, in the future, users will be able to pitch their topics of
-        interest to multiple virtual personalities. For the sake of AI execution
-        cost, I am currently showing the output executed at my end. If you have
-        access to GPTs, you can try it yourself. If you get interesting results,
-        please share them with me!
+        If you have access to GPTs, you can try it yourself. If you get
+        interesting results, please share them with me!
       </p>
       <h3 className="text-2xl font-semibold mt-4">GPTs you can use:</h3>
       <ul className="list-disc ml-4">
@@ -103,8 +101,16 @@ export default function Home() {
         </li>
       </ul>
 
+      <p>I am currently showing the output executed at my end.</p>
+
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
       <Discussions />
+
+      <p>
+        I also a <Link href="/add_topic">page to post new topics</Link>. You can
+        use it to create new discussions. However, there is a bug to render the
+        result. I will fix it soon.
+      </p>
 
       <h2 className="text-4xl font-bold mt-4">About Consensus</h2>
       <p>
