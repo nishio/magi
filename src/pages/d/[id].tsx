@@ -2,6 +2,7 @@
 import { useRouter } from "next/router";
 import { Discussion, discussions } from "../../app/data"; // Adjust the import path as necessary
 import Head from "next/head";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 import "../../app/globals.css";
 import { takeOpinion } from "../../lib/takeOpinion";
@@ -117,23 +118,38 @@ const Navigation = () => {
     </nav>
   );
 };
-const DiscussionPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
 
-  // Find the discussion by id
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = discussions.map((discussion) => ({
+    params: { id: discussion.id },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id;
   const discussion = discussions.find((d) => d.id === id);
-
   if (!discussion) {
-    return <div>Discussion not found</div>;
+    return { notFound: true };
   }
-  const optexts = discussion.viewpoints.map((v) => takeOpinion(v.text).text);
-  const content = `${discussion.topic}[${optexts[0]}][${optexts[1]}][${optexts[2]}]`;
+  return { props: { discussion } };
+};
+
+const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
+  const content = `${discussion.topic}[${discussion.viewpoints
+    .map((v) => takeOpinion(v.text).text)
+    .join("][")}]`;
   return (
     <>
       <Head>
-        <title>Plural Viewpoints</title>
+        <title>Plural Viewpoints - {discussion.topic}</title>
         <meta name="description" content={content} />
+        <meta
+          property="og:title"
+          content={`Plural Viewpoints - ${discussion.topic}`}
+        />
+        <meta property="og:description" content={content} />
+        <meta property="og:type" content="article" />
       </Head>
       <div className="bg-slate-800 text-white min-h-screen">
         <div className="md:mx-4 md:my-4">
@@ -145,54 +161,25 @@ const DiscussionPage = () => {
             <p className="text-white font-medium">{discussion.topic}</p>
           </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <div className="text-center">
-              <a href="#detail-1" className="hover:underline">
-                <p>{discussion.viewpoints[0].name}</p>
-              </a>
-              <YesNo v={takeOpinion(discussion.viewpoints[0].text).v} />
-            </div>
-
-            <div className="text-center">
-              <a href="#detail-2" className="hover:underline">
-                <p>{discussion.viewpoints[1].name}</p>
-              </a>
-              <YesNo v={takeOpinion(discussion.viewpoints[1].text).v} />
-            </div>
-
-            <div className="text-center">
-              <a href="#detail-3" className="hover:underline">
-                <p>{discussion.viewpoints[2].name}</p>
-              </a>
-              <YesNo v={takeOpinion(discussion.viewpoints[2].text).v} />
-            </div>
+            {discussion.viewpoints.map((viewpoint, index) => (
+              <div key={index} className="text-center">
+                <a href={`#detail-${index + 1}`} className="hover:underline">
+                  <p>{viewpoint.name}</p>
+                </a>
+                <YesNo v={takeOpinion(viewpoint.text).v} />
+              </div>
+            ))}
           </div>
           <Consensus discussion={discussion} />
-          <div className="mt-8">
-            <h2 className="text-2xl font-semibold" id="detail-1">
-              {discussion.viewpoints[0].name}
-            </h2>
-            <p className="text-sm text-gray-400">
-              {discussion.viewpoints[0].text}
-            </p>
-
-            <BackToTop />
-            <h2 className="text-2xl font-semibold mt-4" id="detail-2">
-              {discussion.viewpoints[1].name}
-            </h2>
-            <p className="text-sm text-gray-400">
-              {discussion.viewpoints[1].text}
-            </p>
-
-            <BackToTop />
-
-            <h2 className="text-2xl font-semibold mt-4" id="detail-3">
-              {discussion.viewpoints[2].name}
-            </h2>
-            <p className="text-sm text-gray-400">
-              {discussion.viewpoints[2].text}
-            </p>
-          </div>
-          <BackToTop />
+          {discussion.viewpoints.map((viewpoint, index) => (
+            <div key={index} className="mt-8">
+              <h2 className="text-2xl font-semibold" id={`detail-${index + 1}`}>
+                {viewpoint.name}
+              </h2>
+              <p className="text-sm text-gray-400">{viewpoint.text}</p>
+              <BackToTop />
+            </div>
+          ))}
           <hr className="border-gray-400" />
           <Navigation />
         </div>
