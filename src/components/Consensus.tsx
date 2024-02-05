@@ -1,4 +1,4 @@
-import { Discussion } from "../app/data";
+import { Discussion } from "../lib/data";
 import { takeOpinion } from "../lib/takeOpinion";
 
 export const Consensus = ({ discussion }: { discussion: Discussion }) => {

@@ -1,6 +1,6 @@
 // magi/src/pages/d/[id].tsx
 import { useRouter } from "next/router";
-import { Discussion, discussions } from "../../app/data"; // Adjust the import path as necessary
+import { Discussion, discussions } from "../../lib/data"; // Adjust the import path as necessary
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 

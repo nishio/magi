@@ -1,7 +1,7 @@
 import { takeOpinion } from "@/lib/takeOpinion";
 import Image from "next/image";
 import Link from "next/link";
-import { Discussion, discussions } from "./data"; // Adjust the import path as necessary
+import { Discussion, discussions } from "../lib/data"; // Adjust the import path as necessary
 
 const YesNoSpan = ({ v }: { v: number }) => {
   if (v === 2) {
