@@ -4,6 +4,36 @@ import React, { useEffect } from "react";
 import "../app/globals.css";
 import { DiscussionView } from "@/components/DiscussionView";
 
+// firestore settings
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB3uLtmooecyWI4WnHq0jBhf36XdxHa2so",
+  authDomain: "plural-viewpoints.firebaseapp.com",
+  projectId: "plural-viewpoints",
+  storageBucket: "plural-viewpoints.appspot.com",
+  messagingSenderId: "1087194259490",
+  appId: "1:1087194259490:web:aad5aa703f07d581ea2a7b",
+  measurementId: "G-8ZV89P2ZTD",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
 // make spinner component
 const Spinner = () => {
   return (
@@ -13,7 +43,6 @@ const Spinner = () => {
   );
 };
 
-const sectionAPIKey = () => {};
 export default function AddTopic() {
   const [result, setResult] = React.useState("");
   const [key, setKey] = React.useState("");
@@ -40,8 +69,23 @@ export default function AddTopic() {
     });
   };
 
-  const saveToDatabase = () => {};
+  const saveToDatabase = async () => {
+    const obj =
+      JSON.parse(`{"id":"","topic":"Nations will be divided into smaller, overlapping communities.","viewpoints":[{"name":"Synthetic Technocracy","text":"Yes, nations being divided into smaller, overlapping communities can foster a sense of local identity and community engagement. It allows for more localized decision-making and involvement, which can lead to greater satisfaction and collaboration among community members. This approach encourages a sense of ownership and responsibility for the well-being of the community, promoting social cohesion and resilience. However, it is important to ensure that these communities are inclusive, diverse, and do not lead to the exclusion or marginalization of certain groups."},{"name":"Corporate Libertarianism","text":"No, nations should strive for unity and collaboration rather than division. Smaller, overlapping communities can lead to fragmentation and lack of cohesion among the people. It is important for nations to work together and establish common goals in order to foster stability and progress."},{"name":"Digital Democracy","text":"Yes, nations will be divided into smaller, overlapping communities. This decentralization of power and decision-making allows citizens to have a more direct say in matters that affect them. It fosters a sense of belonging and ownership over the decisions that shape their lives. Smaller communities also provide opportunities for localized solutions to unique challenges and promote inclusivity by ensuring that the diverse needs and voices of individuals are heard and represented. Overall, this shift towards smaller, overlapping communities can strengthen democracy and enable more effective governance."}]}
+`);
+    // if (!result) return;
+    const firestore = getFirestore();
+    try {
+      obj.createdAt = serverTimestamp();
+      const docRef = await addDoc(collection(firestore, "topics"), obj);
 
+      console.log("Document written with ID: ", docRef.id);
+      const shareableUrl = `${window.location.origin}/d/${docRef.id}`;
+      console.log("Shareable URL: ", shareableUrl);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
   return (
     <div className="bg-slate-800 text-white min-h-screen">
       <div className="md:mx-4 md:my-4">
@@ -121,7 +165,7 @@ export default function AddTopic() {
           {result && <DiscussionView discussion={JSON.parse(result)} />}
           <div>
             Raw output for debugging:
-            <pre className="mt-5 p-4 bg-white border border-gray-300 rounded bg-gray-900">
+            <pre className="mt-5 p-4 border border-gray-300 rounded bg-gray-900">
               {result}
             </pre>
           </div>
