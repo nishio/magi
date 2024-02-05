@@ -43,7 +43,7 @@ export default function AddTopic() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ q: topic }),
+      body: JSON.stringify({ q: topic, key }),
     }).then((res) => {
       console.log(res);
       res.json().then(({ response }) => {

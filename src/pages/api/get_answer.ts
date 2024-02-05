@@ -1,16 +1,15 @@
 import { Request, Response } from "express";
 
 import axios from "axios";
-const { OPENAI_API_KEY } = process.env;
 
-const model = "gpt-3.5-turbo"; // for local rapid test
-// const model = "gpt-4";
+// const model = "gpt-3.5-turbo"; // for local rapid test
+const model = "gpt-4";
 
-const call_gpt = async (system: string, prompt: string) => {
+const call_gpt = async (system: string, prompt: string, key: string) => {
   const url = "https://api.openai.com/v1/chat/completions";
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${OPENAI_API_KEY}`,
+    Authorization: `Bearer ${key}`,
   };
   const data = {
     model,
@@ -39,12 +38,12 @@ const prompts = [
 ];
 const handler = async (req: Request, res: Response) => {
   console.log("handler 1");
-  const { q } = req.body;
+  const { q, key } = req.body;
   console.log("handler 2");
-  const r1 = await call_gpt(prompts[0], q);
+  const r1 = await call_gpt(prompts[0], q, key);
   console.log("handler 3");
-  const r2 = await call_gpt(prompts[1], q);
-  const r3 = await call_gpt(prompts[2], q);
+  const r2 = await call_gpt(prompts[1], q, key);
+  const r3 = await call_gpt(prompts[2], q, key);
   const ret = {
     id: "",
     topic: q,
