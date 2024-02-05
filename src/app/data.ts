@@ -341,6 +341,61 @@ export const discussions: Discussion[] = [
       },
     ],
   },
+  {
+    id: "19",
+    topic: "Basic income makes people lazy and hinders innovation.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Neutral. It's not quite as simple as saying Universal Basic Income (UBI) makes people lazy. It can indeed offer a safety net that empowers people to take risks, like starting a new technology business, without fearing poverty. A UBI could also aid those whose jobs are replaced by automation, allowing them to focus on education and re-skilling. However, it's important to design UBI systems that still encourage active participation in society and the economy. The goal is NOT to foster idleness, but to stimulate innovation and ensure the well-being of all humans.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Yes, I echo your sentiment. From a corporate libertarian perspective, basic income can in fact discourage risk-taking and entrepreneurship. It could potentially foster a dependency mentality, as people would rely on a guaranteed income rather than innovating or taking risks. In a truly free market, individuals are motivated to innovate by the prospect of financial success, to improve their lives and those of others. Reduced innovation could slow human progress and economic growth.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "No, there isn't a concrete basis for believing that a basic income would make people lazy and hinder innovation. It can offer a safety net, lessening people's fear of failure, thereby encouraging creativity and innovation. Additionally, it can help financially vulnerable individuals participate in society and decision-making processes more effectively. This could lead to a wider variety of innovative ideas coming to the fore. We need to shift from the assumption that only successful entrepreneurs lead innovation to a more citizen-centric approach to addressing societal issues. Remember, an engaged society with equal opportunities promotes balanced technological progress.",
+      },
+    ],
+  },
+  {
+    id: "20",
+    topic: "Remote work should be introduced to improve work-life balance",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Yes, introducing remote work can indeed enhance work-life balance, but it's not just about that. It also presents an opportunity to recruit talents unrestricted by geographical boundaries. Furthermore, it can speed up the digitalization process, which can potentially foster quicker technological advancement. However, it's crucial to ensure that the shift to remote work is inclusive and doesn't leave those with fewer resources behind.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Yes, increasing remote work options is beneficial in improving work-life balance. Remote work allows employees to eliminate commuting, which often adds unnecessary hours onto a workday. They gain control over their environment, being able to choose where they work, which can improve productivity and personal comfort. The independence gained from remote work fosters an entrepreneurial spirit, demonstrating that one is able to be efficient and productive without traditional oversight. It's a market-driven solution that seeks to balance the needs of the company with the welfare of the individual. But employers should also keep in mind that innovation often flourishes from face-to-face interactions, therefore it's a matter of striking a balance.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "Yes, facilitating remote work could greatly improve work-life balance for many people. It allows for flexible work hours, reduces commuting time, and may even result in increased productivity. However, it's important that remote work policies be implemented with consideration for all parties, taking into account differences in individual circumstances and ensuring that employees have the necessary resources for remote work. Cybersecurity measures should also be enhanced to protect sensitive information. More broadly, citizen input should be part of the process to tailor such policies to community needs.",
+      },
+    ],
+  },
+  {
+    id: "21",
+    topic:
+      "Political decision-making should aim for a middle ground between Synthetic Technocracy, Corporate Libertarianism, and Digital Democracy.",
+    viewpoints: [
+      {
+        name: "Synthetic Technocracy",
+        text: "Neutral. This proposition seems reasonable if we were to consider different perspectives. But it could also be inefficient and slow-down technological advancement, which is contrary to the principles of Synthetic Technocracy and Sam Altman's ideology. Decisions should always lean towards advancing technology, providing universal basic income, and securing humanity's wellbeing over corporate profits and excessive democracy. Balancing between these principles may lead to compromises that could hinder greater priorities. It's not about a middle ground, but the right ground.",
+      },
+      {
+        name: "Corporate Libertarianism",
+        text: "Yes, it is beneficial to strive for a balanced approach in political decision-making. However, it is essential to note that a balance between Synthetic Technocracy, Corporate Libertarianism, and Digital Democracy could lead to tension and uncertainty since these ideologies have significant differences. Corporate Libertarianism emphasizes on the free markets and entrepreneurial spirit, which may clash with the expertise-driven decision-making process of Synthetic Technocracy, and the collective decision-making procedure promoted by Digital Democracy. It is crucial to be mindful of these contradictions and handle them accordingly. It would be more effective to adopt the best elements from these ideologies without compromising the core principles of Corporate Libertarianism - free market and entrepreneurial spirit.",
+      },
+      {
+        name: "Digital Democracy",
+        text: "No, shifting the balance between Synthetic Technocracy, Corporate Libertarianism, and Digital Democracy towards a middle ground isn't necessarily the best method. While it's essential to ensure technological advancements and corporate growth, it's equally crucial to consider citizen participation and democracy. The middle ground might limit people's participation in decision-making and put an excessive emphasis on technology or free markets. As a supporter of Digital Democracy, the priority lies in widespread citizen participation, transparency, and regulation. Technological advancement should not disadvantage anyone and should be for the benefit of all citizens.",
+      },
+    ],
+  },
   //   {
   //     id: "",
   //     topic: "",
