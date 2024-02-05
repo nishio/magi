@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths.push({ params: { id: doc.id } });
   });
   // console.log(paths);
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
