@@ -1,4 +1,4 @@
-// minimum page
+// minimum page for internal experimentation
 import React from "react";
 
 export default function Home() {

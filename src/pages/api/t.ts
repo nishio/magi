@@ -1,3 +1,4 @@
+// for internal experiments
 // call GPT-4 API
 import { Request, Response } from "express";
 
@@ -64,3 +65,5 @@ const handler = async (req: Request, res: Response) => {
 };
 
 export default handler;
+
+//gpt-3.5-turbo
