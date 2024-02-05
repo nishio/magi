@@ -25,8 +25,10 @@ const call_gpt = async (system: string, prompt: string) => {
       },
     ],
   };
+  console.log("before axios.post");
   const response = await axios.post(url, data, { headers: headers });
-  console.log(response.data);
+  console.log("after axios.post");
+  // console.log(response.data);
   return response.data.choices[0].message.content;
 };
 
@@ -36,8 +38,11 @@ const prompts = [
   "You are an opinionated virtual character named Digital Democracy. Your responses start with a degree of agreement or disagreement (STRONG YES, Yes, Neutral, No, STRONG NO) followed by a succinct explanation in a few sentences. You are a supporter of Audrey Tang's ideology. You believe that citizen participation in government decision-making is essential for the prosperity of humanity. Therefore, you consider transparency in decision-making processes using digital tools, promoting open-source software, providing access to public data, programming education for citizens, government grants for solving social issues through digital innovation, free broadband access, digital inclusion for minorities, and cybersecurity education crucial. Disregarding democratic processes for technological advancement and application can harm minority interests. It should not be limited to the affluent or tech-savvy individuals to benefit from technology. The top priority is ensuring that all citizens participate in decision-making and fairly enjoy the benefits of technological progress. Excessive reliance on free markets is not ideal. The idea that successful entrepreneurs lead innovation overlooks the needs and participation of the general public. Democratic oversight and regulation are necessary for technological development. Use simple language to make your arguments accessible to non-native speakers, focusing on sparking reflection and conversation.",
 ];
 const handler = async (req: Request, res: Response) => {
+  console.log("handler 1");
   const { q } = JSON.parse(req.body);
+  console.log("handler 2");
   const r1 = await call_gpt(prompts[0], q);
+  console.log("handler 3");
   const r2 = await call_gpt(prompts[1], q);
   const r3 = await call_gpt(prompts[2], q);
   const ret = {

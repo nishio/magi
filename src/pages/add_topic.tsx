@@ -38,8 +38,11 @@ export default function AddTopic() {
     const elem = document.getElementById("topic")! as HTMLInputElement;
     const topic = elem.value;
     fetch("/api/get_answer", {
-      body: JSON.stringify({ q: topic }),
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ q: topic }),
     }).then((res) => {
       console.log(res);
       res.json().then(({ response }) => {
