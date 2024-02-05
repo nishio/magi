@@ -26,15 +26,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
-  const content = `${discussion.topic}[${discussion.viewpoints
+  const content = `${discussion.topic}(${discussion.viewpoints
     .map((v) => takeOpinion(v.text).text)
-    .join("][")}]`;
+    .join("/")})`;
+  const title = `Plural Viewpoints - ${content}`;
   return (
     <>
       <Head>
-        <title>Plural Viewpoints - {content}</title>
+        <title>{title}</title>
         <meta name="description" content={content} />
-        <meta property="og:title" content={`Plural Viewpoints - ${content}`} />
+        <meta property="og:title" content={title} />
         <meta property="og:description" content={content} />
         <meta property="og:type" content="article" />
       </Head>

@@ -57,9 +57,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
   // console.log({ discussion });
-  const content = `${discussion.topic}[${discussion.viewpoints
+  const content = `${discussion.topic}(${discussion.viewpoints
     .map((v) => takeOpinion(v.text).text)
-    .join("][")}]`;
+    .join("/")})`;
   const title = `Plural Viewpoints - ${content}`;
   return (
     <>
