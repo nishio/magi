@@ -99,7 +99,13 @@ export default function Home() {
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
       <p>
         Here are some topics that I created. You can see more in{" "}
-        <Link href="https://magi-nishio.vercel.app/topics">Topics page</Link>.
+        <Link
+          href="https://magi-nishio.vercel.app/topics"
+          className="text-blue-300 hover:text-blue-500 underline"
+        >
+          Topics page
+        </Link>
+        .
       </p>
       <Discussions discussions={discussions} />
 
