@@ -61,8 +61,9 @@ const TopicsPage: NextPage<{ topicsData: Discussion[] }> = ({ topicsData }) => {
           discussions={topicsData.sort((a, b) =>
             b.createdAt!.localeCompare(a.createdAt!)
           )}
+          in_firestore={true}
         />
-        <Discussions discussions={discussions} />
+        <Discussions discussions={discussions} in_firestore={false} />
       </div>
     </>
   );

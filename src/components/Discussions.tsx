@@ -3,11 +3,18 @@ import Link from "next/link";
 import { Discussion } from "../lib/data";
 import { YesNoSpan } from "@/components/YesNoSpan";
 
-export const Discussions = ({ discussions }: { discussions: Discussion[] }) => {
+export const Discussions = ({
+  discussions,
+  in_firestore,
+}: {
+  discussions: Discussion[];
+  in_firestore: boolean;
+}) => {
+  const prefix = in_firestore ? "t" : "d";
   const listItems = discussions.map((discussion) => (
     <li key={discussion.id} className="py-2">
       <Link
-        href={`/d/${discussion.id}`}
+        href={`/${prefix}/${discussion.id}`}
         className="text-blue-300 hover:text-blue-500 underline"
       >
         {discussion.topic}

@@ -107,7 +107,7 @@ export default function Home() {
         </Link>
         .
       </p>
-      <Discussions discussions={discussions} />
+      <Discussions discussions={discussions} in_firestore={false} />
 
       <h2 className="text-4xl font-bold mt-4">About Consensus</h2>
       <p>
