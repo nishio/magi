@@ -55,6 +55,8 @@ const Spinner = ({ state }: { state: string }) => {
     return <span className="animate-spin">🤔</span>;
   } else if (state === "done") {
     return <span>✅</span>;
+  } else if (state === "error") {
+    return <span>❌</span>;
   } else {
     return null;
   }
@@ -72,27 +74,50 @@ export default function AddTopic() {
     setKey(localStorage.getItem("openai-api-key") || "");
   }, []);
 
+  const getKey = () => {
+    const elem = document.getElementById("openai-api-key")! as HTMLInputElement;
+    return elem.value;
+  };
+
   const submitTopic = () => {
     setState1("running");
     setState2("running");
     setState3("running");
-
-    const elem = document.getElementById("topic")! as HTMLInputElement;
+    const key = getKey();
+    const elem = document.getElementById("topic") as HTMLInputElement;
     const topic = elem.value;
 
     Promise.all([
-      call_gpt(prompts[0], topic, key).then((response) => {
-        setState1("done");
-        return response;
-      }),
-      call_gpt(prompts[1], topic, key).then((response) => {
-        setState2("done");
-        return response;
-      }),
-      call_gpt(prompts[2], topic, key).then((response) => {
-        setState3("done");
-        return response;
-      }),
+      call_gpt(prompts[0], topic, key)
+        .then((response) => {
+          setState1("done");
+          return response;
+        })
+        .catch((e) => {
+          setState1("error");
+          console.error(e);
+          return "";
+        }),
+      call_gpt(prompts[1], topic, key)
+        .then((response) => {
+          setState2("done");
+          return response;
+        })
+        .catch((e) => {
+          setState2("error");
+          console.error(e);
+          return "";
+        }),
+      call_gpt(prompts[2], topic, key)
+        .then((response) => {
+          setState3("done");
+          return response;
+        })
+        .catch((e) => {
+          setState3("error");
+          console.error(e);
+          return "";
+        }),
     ]).then((results) => {
       setResult(
         JSON.stringify({
@@ -129,6 +154,7 @@ export default function AddTopic() {
     const shareableUrl = `https://magi-nishio.vercel.app/t/${docRef.id}`;
     setUrl(shareableUrl);
   };
+
   return (
     <div className="bg-slate-800 text-white min-h-screen">
       <div className="md:mx-4 md:my-4">
@@ -148,10 +174,7 @@ export default function AddTopic() {
             <button
               className="mr-4 px-4 py-2 bg-blue-900 text-white rounded"
               onClick={() => {
-                const elem = document.getElementById(
-                  "openai-api-key"
-                )! as HTMLInputElement;
-                const key = elem.value;
+                const key = getKey();
                 localStorage.setItem("openai-api-key", key);
                 setKey(key);
               }}
