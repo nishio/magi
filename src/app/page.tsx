@@ -40,11 +40,11 @@ const Discussions = () => {
 export default function Home() {
   return (
     <div className="bg-slate-800 text-white min-h-screen">
-      <nav className="flex flex-wrap items-center space-x-2 text-sm md:mx-4 md:my-4">
+      <h1 className="text-6xl font-bold">
         <a href="#" className="hover:underline">
-          Plural Viewpoints
+          ⿻Plural Viewpoints
         </a>
-      </nav>
+      </h1>
       <h2 className="text-4xl font-bold mt-4">What is this?</h2>
       <p>
         This is a tool that provides an opportunity for people to observe world
@@ -70,8 +70,25 @@ export default function Home() {
         personalities.
       </p>
       <p>
-        If you have access to GPTs, you can try it yourself. If you get
-        interesting results, please share them with me!
+        If you can make OpenAI API Key, you can use it in the{" "}
+        <Link
+          href="/add_topic"
+          className="text-blue-300 hover:text-blue-500 underline"
+        >
+          Add Topic
+        </Link>{" "}
+        page.
+      </p>
+
+      <p>
+        If you have access to ChatGPT Plus. You can try following GPTs. If you
+        get interesting results, please share them with me!{" "}
+        <a
+          href="https://github.com/nishio/magi/discussions/2"
+          className="text-blue-300 hover:text-blue-500 underline"
+        >
+          Forum
+        </a>
       </p>
       <h3 className="text-2xl font-semibold mt-4">GPTs you can use:</h3>
       <ul className="list-disc ml-4">
@@ -101,16 +118,12 @@ export default function Home() {
         </li>
       </ul>
 
-      <p>I am currently showing the output executed at my end.</p>
-
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
-      <Discussions />
-
       <p>
-        I also a <Link href="/add_topic">page to post new topics</Link>. You can
-        use it to create new discussions. However, there is a bug to render the
-        result. I will fix it soon.
+        Here are some outputs executed at my end. I am creating index page to
+        show user created discussions now.
       </p>
+      <Discussions />
 
       <h2 className="text-4xl font-bold mt-4">About Consensus</h2>
       <p>
