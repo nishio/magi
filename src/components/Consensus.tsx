@@ -3,6 +3,15 @@ import { takeOpinion } from "../lib/takeOpinion";
 
 export const Consensus = ({ discussion }: { discussion: Discussion }) => {
   const vs = discussion.viewpoints.map((v) => takeOpinion(v.text).v);
+  // if some of v is 0.5 (error)
+  if (vs.some((v) => v == 0.5)) {
+    return (
+      <div className="text-center bg-gray-700 p-2 border">
+        <p>System Error</p>
+      </div>
+    );
+  }
+
   // if all is positive
   if (vs.every((v) => v > 0)) {
     return (
@@ -16,6 +25,14 @@ export const Consensus = ({ discussion }: { discussion: Discussion }) => {
     return (
       <div className="text-center bg-red-500 p-2 border">
         <p>Consensus: No</p>
+      </div>
+    );
+  }
+  // if all is neutral
+  if (vs.every((v) => v == 0)) {
+    return (
+      <div className="text-center bg-gray-700 p-2 border">
+        <p>Consensus: Neutral</p>
       </div>
     );
   }
