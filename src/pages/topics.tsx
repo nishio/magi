@@ -3,42 +3,31 @@ import Head from "next/head";
 import React from "react";
 import "../app/globals.css";
 
-import { useEffect, useState } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "@/lib/firestore_app";
 import { Discussion, discussions } from "@/lib/data";
 import { Navigation } from "@/components/Navigation";
 import { Discussions } from "@/components/Discussions";
+import Link from "next/link";
+export const getServerSideProps = async () => {
+  const app = initializeApp(firebaseConfig);
+  const firestore = getFirestore(app);
+  const querySnapshot = await getDocs(collection(firestore, "topics"));
+  const topicsData = querySnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+    createdAt: doc.data().createdAt.toDate().toISOString(),
+  })) as Discussion[];
 
-const TopicsList = () => {
-  const [topics, setTopics] = useState([] as Discussion[]);
-
-  useEffect(() => {
-    const fetchTopics = async () => {
-      const app = initializeApp(firebaseConfig);
-      const firestore = getFirestore(app);
-      const querySnapshot = await getDocs(collection(firestore, "topics"));
-      const topicsData: any[] = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setTopics(topicsData);
-    };
-
-    fetchTopics();
-  }, []);
-
-  return (
-    <div>
-      <Discussions discussions={topics} />
-    </div>
-  );
+  return {
+    props: {
+      topicsData,
+    },
+  };
 };
 
-// export default TopicsList;
-
-const TopicsPage: NextPage = () => {
+const TopicsPage: NextPage<{ topicsData: Discussion[] }> = ({ topicsData }) => {
   return (
     <>
       <Head>
@@ -51,8 +40,28 @@ const TopicsPage: NextPage = () => {
       <div className="bg-slate-800 text-white min-h-screen">
         <Navigation />
         <h1 className="text-4xl font-bold">Discussion Topics</h1>
-        <p>Including user-generated topics.</p>
-        <TopicsList />
+        <p>
+          Including user-generated topics. What is this? See{" "}
+          <Link
+            href="/"
+            className="text-blue-300 hover:text-blue-500 underline"
+          >
+            INDEX
+          </Link>
+          . Want to add your topic? Visit{" "}
+          <Link
+            href="/add_topic"
+            className="text-blue-300 hover:text-blue-500 underline"
+          >
+            Add Topic
+          </Link>
+          .
+        </p>
+        <Discussions
+          discussions={topicsData.sort((a, b) =>
+            b.createdAt!.localeCompare(a.createdAt!)
+          )}
+        />
         <Discussions discussions={discussions} />
       </div>
     </>

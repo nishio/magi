@@ -2,6 +2,7 @@ export interface Discussion {
   topic: string;
   id: string;
   viewpoints: { name: string; text: string }[];
+  createdAt?: string;
 }
 
 export const discussions: Discussion[] = [

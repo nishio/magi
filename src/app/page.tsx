@@ -151,7 +151,13 @@ export default function Home() {
       <p>It inspired me to create this web service.</p>
 
       <h2 className="text-4xl font-bold mt-4">Shere this service</h2>
-      <Image src="/qr.png" alt="QR code" className="max-w-xs" />
+      <Image
+        src="/qr.png"
+        alt="QR code"
+        className="max-w-xs"
+        width={300}
+        height={300}
+      />
       <h2 className="text-4xl font-bold mt-4">About the Author</h2>
       <p>
         <a
