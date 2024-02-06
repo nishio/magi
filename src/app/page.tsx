@@ -87,7 +87,13 @@ export default function Home() {
       <p>
         If you don&apos;t have OpenAI API Key and access to GPTs, post your
         question on{" "}
-        <a href="https://github.com/nishio/magi/discussions/3">the forum</a>.
+        <a
+          href="https://github.com/nishio/magi/discussions/3"
+          className="text-blue-300 hover:text-blue-500 underline"
+        >
+          the forum
+        </a>
+        .
       </p>
 
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
