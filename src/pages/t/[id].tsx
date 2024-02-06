@@ -19,6 +19,7 @@ import { DiscussionView } from "../../components/DiscussionView";
 import { Discussion } from "@/lib/data";
 import { firebaseConfig } from "@/lib/firestore_app";
 import { initializeApp } from "firebase/app";
+import { generate_svg } from "./generate_svg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as { params: { id: string } }[];
@@ -64,6 +65,29 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
     .map((v) => takeOpinion(v.text).text)
     .join("/")})`;
   const title = `⿻${content}`;
+
+  const copySvgToClipboard = () => {
+    const svgElement = document.getElementById("ogp-image")!;
+    svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    const svgData = svgElement.outerHTML;
+    const svgBlob = new Blob([svgData], {
+      type: "image/svg+xml;charset=utf-8",
+    });
+    const URL = window.URL || window.webkitURL || window;
+    const svgUrl = URL.createObjectURL(svgBlob);
+
+    const downloadLink = document.createElement("a");
+    downloadLink.href = svgUrl;
+    downloadLink.download = "discussion.svg";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
+
+  const copyButton = (
+    <button onClick={copySvgToClipboard}>Copy SVG to Clipboard</button>
+  );
+
   return (
     <>
       <Head>
@@ -80,6 +104,9 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
           <hr className="border-gray-400" />
           <Navigation />
         </div>
+        <h2>OGP Image</h2>
+        {copyButton}
+        {generate_svg(discussion)}
       </div>
     </>
   );
