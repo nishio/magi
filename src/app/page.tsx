@@ -92,8 +92,8 @@ export default function Home() {
 
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
       <p>
-        Here are some outputs executed at my end. I am creating index page to
-        show user created discussions now.
+        Here are some topics that I created. You can see more in{" "}
+        <Link href="https://magi-nishio.vercel.app/topics">Topics page</Link>.
       </p>
       <Discussions discussions={discussions} />
 
