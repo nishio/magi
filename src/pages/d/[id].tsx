@@ -29,7 +29,7 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
   const content = `${discussion.topic}(${discussion.viewpoints
     .map((v) => takeOpinion(v.text).text)
     .join("/")})`;
-  const title = `Plural Viewpoints - ${content}`;
+  const title = `⿻${content}`;
   return (
     <>
       <Head>
