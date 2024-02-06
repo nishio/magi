@@ -118,6 +118,12 @@ export default function Home() {
         </li>
       </ul>
 
+      <p>
+        If you don&apos;t have OpenAI API Key and access to GPTs, post your
+        question on{" "}
+        <a href="https://github.com/nishio/magi/discussions/3">the forum</a>.
+      </p>
+
       <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
       <p>
         Here are some outputs executed at my end. I am creating index page to
@@ -178,6 +184,8 @@ export default function Home() {
       </p>
       <p>It inspired me to create this web service.</p>
 
+      <h2 className="text-4xl font-bold mt-4">Shere this service</h2>
+      <img src="/qr.png" alt="QR code" className="max-w-xs" />
       <h2 className="text-4xl font-bold mt-4">About the Author</h2>
       <p>
         <a
