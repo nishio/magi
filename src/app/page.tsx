@@ -3,21 +3,87 @@ import Link from "next/link";
 import { discussions } from "../lib/data"; // Adjust the import path as necessary
 import { Discussions } from "../components/Discussions";
 
+const GPTs = (
+  <ul className="list-disc ml-4 lg:ml-12">
+    <li>
+      <a
+        href="https://chat.openai.com/g/g-UOUeqC8dJ-synthetic-technocracy"
+        className="text-blue-300 hover:text-blue-500 underline"
+      >
+        ChatGPT - Synthetic Technocracy
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://chat.openai.com/g/g-8jVsJ1tcW-corporate-libertarianism"
+        className="text-blue-300 hover:text-blue-500 underline"
+      >
+        ChatGPT - Corporate Libertarianism
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://chat.openai.com/g/g-lRzyfvWfZ-digital-democracy"
+        className="text-blue-300 hover:text-blue-500 underline"
+      >
+        ChatGPT - Digital Democracy
+      </a>
+    </li>
+  </ul>
+);
+
 export default function Home() {
+  const AddTopic = (
+    <Link
+      href="/add_topic"
+      className="text-blue-300 hover:text-blue-500 underline"
+    >
+      Add Topic
+    </Link>
+  );
+
+  const Forum1 = (
+    <a
+      href="https://github.com/nishio/magi/discussions/2"
+      className="text-blue-300 hover:text-blue-500 underline"
+    >
+      the forum
+    </a>
+  );
+
+  const Forum2 = (
+    <a
+      href="https://github.com/nishio/magi/discussions/3"
+      className="text-blue-300 hover:text-blue-500 underline"
+    >
+      the forum
+    </a>
+  );
+
+  const LinkToTopics = (title: string) => {
+    return (
+      <Link
+        href={`https://magi-nishio.vercel.app/topics`}
+        className="text-blue-300 hover:text-blue-500 underline"
+      >
+        {title}
+      </Link>
+    );
+  };
   return (
-    <div className="bg-slate-800 text-white min-h-screen">
+    <div className="bg-slate-800 text-white min-h-screen lg:m-20">
       <h1 className="text-6xl font-bold">
         <a href="#" className="hover:underline">
           ⿻Plural Viewpoints
         </a>
       </h1>
-      <h2 className="text-4xl font-bold mt-4">What is this?</h2>
-      <p>
+      <h2 className="text-4xl font-bold mt-4">❓What is this?</h2>
+      <p className="p">
         This is a tool that provides an opportunity for people to observe world
         from plural viewpoints. A single question posed by a human is answered
         by three virtual personalities with different ideologies.
       </p>
-      <p>
+      <p className="p">
         There is a Japanese proverb that says, &quot;
         <a
           href="https://scrapbox.io/nishio-en/When_three_people_gather,_devine_wisdom_emerges"
@@ -28,89 +94,44 @@ export default function Home() {
         &quot; Good wisdom can be gained when three people with different
         perspectives come together to think.
       </p>
-      <h2 className="text-4xl font-bold mt-4">How to use</h2>
-      <p>
+
+      <h2 className="text-4xl font-bold mt-4">📖How to use</h2>
+      <p className="p">
         You can ask a question to three virtual personalities. The virtual
         personalities will answer yes/no to your question from their own
         perspectives. You can also see the consensus of the virtual
         personalities.
       </p>
-      <p>
-        If you can make OpenAI API Key, you can use it in the{" "}
-        <Link
-          href="/add_topic"
-          className="text-blue-300 hover:text-blue-500 underline"
-        >
-          Add Topic
-        </Link>{" "}
-        page.
+
+      <h3 className="text-2xl font-semibold mt-4">✚{AddTopic}</h3>
+      <p className="p">
+        If you can make OpenAI API Key, you can use it in the {AddTopic} page.
       </p>
 
-      <p>
+      <h3 className="text-2xl font-semibold mt-4">🤖GPTs</h3>
+      <p className="p">
         If you have access to ChatGPT Plus. You can try following GPTs. If you
-        get interesting results, please share them with me!{" "}
-        <a
-          href="https://github.com/nishio/magi/discussions/2"
-          className="text-blue-300 hover:text-blue-500 underline"
-        >
-          Forum
-        </a>
+        get interesting results, please share them with me on the {Forum1}!
       </p>
-      <h3 className="text-2xl font-semibold mt-4">GPTs you can use:</h3>
-      <ul className="list-disc ml-4">
-        <li>
-          <a
-            href="https://chat.openai.com/g/g-UOUeqC8dJ-synthetic-technocracy"
-            className="text-blue-300 hover:text-blue-500 underline"
-          >
-            ChatGPT - Synthetic Technocracy
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://chat.openai.com/g/g-8jVsJ1tcW-corporate-libertarianism"
-            className="text-blue-300 hover:text-blue-500 underline"
-          >
-            ChatGPT - Corporate Libertarianism
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://chat.openai.com/g/g-lRzyfvWfZ-digital-democracy"
-            className="text-blue-300 hover:text-blue-500 underline"
-          >
-            ChatGPT - Digital Democracy
-          </a>
-        </li>
-      </ul>
+      <p className="p">GPTs you can use:</p>
+      {GPTs}
 
-      <p>
+      <p className="p">
         If you don&apos;t have OpenAI API Key and access to GPTs, post your
-        question on{" "}
-        <a
-          href="https://github.com/nishio/magi/discussions/3"
-          className="text-blue-300 hover:text-blue-500 underline"
-        >
-          the forum
-        </a>
-        .
+        question on the {Forum2}.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-4">Sample Discussions:</h3>
-      <p>
+      <h3 className="text-2xl font-semibold mt-4">
+        💬{LinkToTopics("Sample Discussions")}
+      </h3>
+      <p className="p">
         Here are some topics that I created. You can see more in{" "}
-        <Link
-          href="https://magi-nishio.vercel.app/topics"
-          className="text-blue-300 hover:text-blue-500 underline"
-        >
-          Topics page
-        </Link>
-        .
+        {LinkToTopics("Topics Page")}.
       </p>
       <Discussions discussions={discussions} in_firestore={false} />
 
-      <h2 className="text-4xl font-bold mt-4">About Consensus</h2>
-      <p>
+      <h2 className="text-4xl font-bold mt-4">🤝About Consensus</h2>
+      <p className="p">
         This system does not use majority rule by voting. Consensus is reached
         when all three respondents are in the same direction, and weak consensus
         when some are neutral.
@@ -120,9 +141,9 @@ export default function Home() {
         className="text-4xl font-bold mt-4"
         id="political-ideologies-for-the-21st-century"
       >
-        What is &quot;Political Ideologies for the 21st Century&quot;
+        🌍What is &quot;Political Ideologies for the 21st Century&quot;
       </h2>
-      <p>
+      <p className="p">
         &quot;
         <a
           href="https://www.radicalxchange.org/media/blog/political-ideologies-for-the-21st-century/"
@@ -134,7 +155,7 @@ export default function Home() {
         talks about three political ideologies that are emerging in the 21st
         century.
       </p>
-      <p>
+      <p className="p">
         I find this concept to be very valuable when thinking about the future
         of society, but on the other hand, I feel it&apos;s challenging to
         explain and make people understand it in words. That&apos;s why I&apos;m
@@ -145,9 +166,9 @@ export default function Home() {
         className="text-4xl font-bold mt-4"
         id="political-ideologies-for-the-21st-century"
       >
-        What is &quot;MAGI System&quot;
+        📚What is &quot;MAGI System&quot;
       </h2>
-      <p>
+      <p className="p">
         The &quot;
         <a
           href="https://scrapbox.io/nishio-en/MAGI_System"
@@ -160,9 +181,9 @@ export default function Home() {
         independent but interconnected supercomputers, and each supercomputer
         represents a different aspect of human thought.
       </p>
-      <p>It inspired me to create this web service.</p>
+      <p className="p">It inspired me to create this web service.</p>
 
-      <h2 className="text-4xl font-bold mt-4">Shere this service</h2>
+      <h2 className="text-4xl font-bold mt-4">🔄Share this service</h2>
       <Image
         src="/qr.png"
         alt="QR code"
@@ -170,8 +191,9 @@ export default function Home() {
         width={300}
         height={300}
       />
-      <h2 className="text-4xl font-bold mt-4">About the Author</h2>
-      <p>
+
+      <h2 className="text-4xl font-bold mt-4">📝About the Author</h2>
+      <p className="p">
         <a
           href="https://scrapbox.io/nishio-en/"
           className="text-blue-300 hover:text-blue-500 underline"
@@ -179,7 +201,7 @@ export default function Home() {
           NISHIO Hirokazu
         </a>
       </p>
-      <p>
+      <p className="p">
         <a
           href="https://github.com/nishio/magi"
           className="text-blue-300 hover:text-blue-500 underline"

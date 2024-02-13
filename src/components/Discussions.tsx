@@ -12,7 +12,7 @@ export const Discussions = ({
 }) => {
   const prefix = in_firestore ? "t" : "d";
   const listItems = discussions.map((discussion) => (
-    <li key={discussion.id} className="py-2">
+    <li key={discussion.id}>
       <Link
         href={`/${prefix}/${discussion.id}`}
         className="text-blue-300 hover:text-blue-500 underline"
@@ -25,5 +25,5 @@ export const Discussions = ({
     </li>
   ));
 
-  return <ul className="list-disc ml-4">{listItems}</ul>;
+  return <ul className="list-disc ml-4 lg:ml-12">{listItems}</ul>;
 };
