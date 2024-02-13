@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { discussions } from "../lib/data"; // Adjust the import path as necessary
 import { Discussions } from "../components/Discussions";
+import { AddTopic } from "../components/AddTopic";
 
 const GPTs = (
   <ul className="list-disc ml-4 lg:ml-12">
@@ -33,15 +34,6 @@ const GPTs = (
 );
 
 export default function Home() {
-  const AddTopic = (
-    <Link
-      href="/add_topic"
-      className="text-blue-300 hover:text-blue-500 underline"
-    >
-      Add Topic
-    </Link>
-  );
-
   const Forum1 = (
     <a
       href="https://github.com/nishio/magi/discussions/2"

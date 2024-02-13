@@ -10,24 +10,36 @@ import { Discussion, discussions } from "@/lib/data";
 import { Navigation } from "@/components/Navigation";
 import { Discussions } from "@/components/Discussions";
 import Link from "next/link";
-export const getServerSideProps = async () => {
-  const app = initializeApp(firebaseConfig);
-  const firestore = getFirestore(app);
-  const querySnapshot = await getDocs(collection(firestore, "topics"));
-  const topicsData = querySnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-    createdAt: doc.data().createdAt.toDate().toISOString(),
-  })) as Discussion[];
+import { AddTopic } from "@/components/AddTopic";
 
-  return {
-    props: {
-      topicsData,
-    },
+const TopicsPage: NextPage<{ topicsData: Discussion[] }> = () => {
+  const [topicsData, setDiscussions] = React.useState<Discussion[] | null>(
+    null
+  );
+
+  const NewTopics = () => {
+    if (topicsData === null) {
+      return <div>loading latest topics...</div>;
+    }
+    return <Discussions discussions={topicsData} in_firestore={true} />;
   };
-};
 
-const TopicsPage: NextPage<{ topicsData: Discussion[] }> = ({ topicsData }) => {
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const app = initializeApp(firebaseConfig);
+      const firestore = getFirestore(app);
+      const querySnapshot = await getDocs(collection(firestore, "topics"));
+      const topicsData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        createdAt: doc.data().createdAt.toDate().toISOString(),
+      })) as Discussion[];
+
+      setDiscussions(topicsData);
+    };
+
+    fetchData();
+  }, [topicsData]);
   return (
     <>
       <Head>
@@ -48,21 +60,8 @@ const TopicsPage: NextPage<{ topicsData: Discussion[] }> = ({ topicsData }) => {
           >
             INDEX
           </Link>
-          . Want to add your topic? Visit{" "}
-          <Link
-            href="/add_topic"
-            className="text-blue-300 hover:text-blue-500 underline"
-          >
-            Add Topic
-          </Link>
-          .
+          . Want to add your topic? Visit {AddTopic}.
         </p>
-        <Discussions
-          discussions={topicsData.sort((a, b) =>
-            b.createdAt!.localeCompare(a.createdAt!)
-          )}
-          in_firestore={true}
-        />
         <Discussions discussions={discussions} in_firestore={false} />
       </div>
     </>
