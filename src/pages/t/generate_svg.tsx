@@ -545,3 +545,6 @@ NEGATIVE"
     </svg>
   );
 };
+
+const Foo = null;
+export default Foo;
