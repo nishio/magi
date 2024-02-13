@@ -41,15 +41,23 @@ function wrapText(textElement: SVGTextElement, text: string, maxWidth: number) {
 }
 
 export const generate_svg = (discussion: Discussion) => {
-  const prompt = (
-    <foreignObject x="0" y="0" width="150" height="800">
-      {" "}
-      <div>
-        PROMPT:
-        <div style={{ marginLeft: "0.5em" }}>{discussion.topic}</div>
-      </div>
-    </foreignObject>
-  );
+  // const prompt = (
+  //   <foreignObject x="0" y="0" width="150" height="800">
+  //     {" "}
+  //     <div>
+  //       PROMPT:
+  //       <div style={{ marginLeft: "0.5em" }}>{discussion.topic}</div>
+  //     </div>
+  //   </foreignObject>
+  // );
+  // const promptTextElement = (<text></text>) as SVGTextElement;
+
+  // promptTextElement.setAttribute("x", "0");
+  // promptTextElement.setAttribute("y", "0");
+  // wrapText(promptTextElement, `PROMPT: ${discussion.topic}`, 150);
+  // const prompt = promptTextElement;
+
+  const prompt = null;
   const r1 = (
     <foreignObject x="733" y="63" width="425" height="130">
       <div
