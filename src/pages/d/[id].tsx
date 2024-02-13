@@ -39,6 +39,7 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={content} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content={`/api/ogp/${discussion.id}`} />
       </Head>
       <div className="bg-slate-800 text-white min-h-screen">
         <div className="md:mx-4 md:my-4">
