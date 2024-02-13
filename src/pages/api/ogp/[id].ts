@@ -2,12 +2,14 @@ import { generate_svg } from "../../../lib/generate_svg";
 import { discussions } from "@/lib/data"; // Assuming this function exists for fetching discussion data by ID
 import { renderToStaticMarkup } from "react-dom/server";
 import sharp from "sharp";
+import { Request, Response } from "express";
+import { get_discussion_by_id } from "@/lib/get_discussion_by_id";
 
-export default async function handler(req, res) {
+export default async function handler(req: Request, res: Response) {
   const { id } = req.query;
 
   try {
-    const d = discussions.find((d) => d.id === id);
+    const d = await get_discussion_by_id(id);
     if (!d) {
       res.status(404).send("Not Found");
       return;
