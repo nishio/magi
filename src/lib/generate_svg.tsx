@@ -53,14 +53,14 @@ export const generate_svg = (discussion: Discussion) => {
   const vs = discussion.viewpoints.map((v) => takeOpinion(v.text).v);
 
   const jalabel = vs.map((v) => v_to_jalabel(v));
-
+  const width = "700";
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="1200"
+      width={width}
       height="630"
-      viewBox="0 0 1200 630"
+      viewBox={`0 0 ${width} 630`}
       id="ogp-image"
     >
       <defs>
@@ -105,7 +105,7 @@ export const generate_svg = (discussion: Discussion) => {
           <stop offset="1" stop-color="gray" />
         </linearGradient>
         <filter
-          id="否定"
+          id="RIGHT_LABEL"
           x="463.595"
           y="500.095"
           width="110"
@@ -119,7 +119,7 @@ export const generate_svg = (discussion: Discussion) => {
           <feComposite in="SourceGraphic" />
         </filter>
         <filter
-          id="中立"
+          id="LEFT_LABEL"
           x="141.655"
           y="500.095"
           width="110"
@@ -133,7 +133,7 @@ export const generate_svg = (discussion: Discussion) => {
           <feComposite in="SourceGraphic" />
         </filter>
         <filter
-          id="承認"
+          id="TOP_LABEL"
           x="304"
           y="242"
           width="110"
@@ -146,35 +146,20 @@ export const generate_svg = (discussion: Discussion) => {
           <feComposite operator="in" in2="blur-3" />
           <feComposite in="SourceGraphic" />
         </filter>
-        <filter
-          id="承認-2"
-          x="304"
-          y="242"
-          width="110"
-          height="70"
-          filterUnits="userSpaceOnUse"
-        >
-          <feOffset dy="3" in="SourceAlpha" />
-          <feGaussianBlur stdDeviation="3" result="blur-4" />
-          <feFlood flood-opacity="0.161" result="color" />
-          <feComposite operator="out" in="SourceGraphic" in2="blur-4" />
-          <feComposite operator="in" in="color" />
-          <feComposite operator="in" in2="SourceGraphic" />
-        </filter>
-        <clipPath id="clip-アートボード_2">
-          <rect width="1200" height="630" />
+        <clipPath id="clip">
+          <rect width={width} height="630" />
         </clipPath>
       </defs>
       <g
         id="アートボード_2"
         data-name="アートボード – 2"
-        clip-path="url(#clip-アートボード_2)"
+        clip-path="url(#clip)"
       >
-        <rect width="1200" height="630" />
+        {/* <rect width="1200" height="630" /> */}
+        <rect width={width} height="630" />
         {/* {PROMPT_BOX(discussion)} */}
         <path
           id="楕円形_1"
-          data-name="楕円形 1"
           d="M110,30a80,80,0,1,0,80,80,80.091,80.091,0,0,0-80-80m0-30A110,110,0,1,1,0,110,110,110,0,0,1,110,0Z"
           transform="translate(248 223)"
           fill="#ff8902"
@@ -182,7 +167,8 @@ export const generate_svg = (discussion: Discussion) => {
         {TOP_UNIT(discussion)}
         {LEFT_UNIT(discussion)}
         {RIGHT_UNIT(discussion)}
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#否定)">
+
+        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#RIGHT_LABEL)">
           <text
             id="否定-2"
             transform="translate(558.59 550.09)"
@@ -195,7 +181,7 @@ export const generate_svg = (discussion: Discussion) => {
           </text>
         </g>
 
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#中立)">
+        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#LEFT_LABEL)">
           <text
             id="中立-2"
             data-name="中立"
@@ -208,7 +194,7 @@ export const generate_svg = (discussion: Discussion) => {
             </tspan>
           </text>
         </g>
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#承認)">
+        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#TOP_LABEL)">
           <text
             id="承認-3"
             data-name="承認"
@@ -221,54 +207,6 @@ export const generate_svg = (discussion: Discussion) => {
             </tspan>
           </text>
         </g>
-        <text
-          id="Digital_Democracy"
-          data-name="Digital
-Democracy"
-          transform="translate(674.169 440.037) rotate(45)"
-          font-size="28"
-          font-family="Helvetica-Bold, Helvetica"
-          font-weight="700"
-        >
-          <tspan x="-85.559" y="0">
-            Digital
-          </tspan>
-          <tspan x="-150.979" y="34">
-            Democracy
-          </tspan>
-        </text>
-        <text
-          id="Corporate_Libertarianism"
-          data-name="Corporate
-Libertarianism"
-          transform="translate(42.546 439.617) rotate(-45)"
-          font-size="28"
-          font-family="Helvetica-Bold, Helvetica"
-          font-weight="700"
-        >
-          <tspan x="0" y="0">
-            Corporate
-          </tspan>
-          <tspan x="0" y="34">
-            Libertarianism
-          </tspan>
-        </text>
-        <text
-          id="Synthetic_Technocracy"
-          data-name="Synthetic
-Technocracy"
-          transform="translate(359 82)"
-          font-size="28"
-          font-family="Helvetica-Bold, Helvetica"
-          font-weight="700"
-        >
-          <tspan x="-63.014" y="0">
-            Synthetic
-          </tspan>
-          <tspan x="-85.34" y="34">
-            Technocracy
-          </tspan>
-        </text>
 
         {/* {FIRST_BOX(discussion)} */}
 
@@ -323,6 +261,22 @@ const TOP_UNIT = (discussion: Discussion) => {
         transform="translate(255 3403)"
         fill="#ff8900"
       />
+      <text
+        id="Synthetic_Technocracy"
+        data-name="Synthetic
+Technocracy"
+        transform="translate(359 82)"
+        font-size="28"
+        font-family="Helvetica-Bold, Helvetica"
+        font-weight="700"
+      >
+        <tspan x="-63.014" y="0">
+          Synthetic
+        </tspan>
+        <tspan x="-85.34" y="34">
+          Technocracy
+        </tspan>
+      </text>
     </>
   );
 };
@@ -330,7 +284,6 @@ const TOP_UNIT = (discussion: Discussion) => {
 const LEFT_UNIT = (discussion: Discussion) => {
   const vs = discussion.viewpoints.map((v) => takeOpinion(v.text).v);
   const negaposi = vs.map((v) => v_to_negaposi(v));
-  const jalabel = vs.map((v) => v_to_jalabel(v));
 
   return (
     <>
@@ -348,6 +301,20 @@ const LEFT_UNIT = (discussion: Discussion) => {
         transform="translate(40.879 3620)"
         fill="#ff8900"
       />
+      <text
+        id="Corporate_Libertarianism"
+        transform="translate(42.546 439.617) rotate(-45)"
+        font-size="28"
+        font-family="Helvetica-Bold, Helvetica"
+        font-weight="700"
+      >
+        <tspan x="0" y="0">
+          Corporate
+        </tspan>
+        <tspan x="0" y="34">
+          Libertarianism
+        </tspan>
+      </text>
     </>
   );
 };
@@ -359,18 +326,30 @@ const RIGHT_UNIT = (discussion: Discussion) => {
     <>
       <path
         id="前面オブジェクトで型抜き_8"
-        data-name="前面オブジェクトで型抜き 8"
         d="M182.655-3018.446h0L29-3172.1v-46.242L157.656-3347h50l151.778,151.777L182.655-3018.446Z"
         transform="translate(336 3620)"
         fill={`url(#${negaposi[2]})`}
       />
       <path
         id="前面オブジェクトで型抜き_8_-_アウトライン"
-        data-name="前面オブジェクトで型抜き 8 - アウトライン"
         d="M182.655-3022.689,355.19-3195.223,206.412-3344H158.9L32-3217.1v43.757l150.655,150.656m0,4.243h0L29-3172.1v-46.242L157.656-3347h50l151.778,151.777Z"
         transform="translate(336 3620)"
         fill="#ff8900"
       />
+      <text
+        id="Digital_Democracy"
+        transform="translate(674.169 440.037) rotate(45)"
+        font-size="28"
+        font-family="Helvetica-Bold, Helvetica"
+        font-weight="700"
+      >
+        <tspan x="-85.559" y="0">
+          Digital
+        </tspan>
+        <tspan x="-150.979" y="34">
+          Democracy
+        </tspan>
+      </text>
     </>
   );
 };

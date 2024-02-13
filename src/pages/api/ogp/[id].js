@@ -7,12 +7,11 @@ export default async function handler(req, res) {
   const { id } = req.query;
 
   try {
-    // const discussion = await getDiscussionById(id); // Fetch the discussion data based on the ID
-    // if (!discussion) {
-    //   res.status(404).send('Not Found');
-    //   return;
-    // }
-    const d = discussions[0];
+    const d = discussions.find((d) => d.id === id);
+    if (!d) {
+      res.status(404).send("Not Found");
+      return;
+    }
 
     const svgJSX = generate_svg(d); // Use the generate_svg function to create SVG content
     const svgContent = renderToStaticMarkup(svgJSX); // Convert JSX to string
