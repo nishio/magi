@@ -12,10 +12,8 @@ import { Discussions } from "@/components/Discussions";
 import Link from "next/link";
 import { AddTopic } from "@/components/AddTopic";
 
-const TopicsPage: NextPage<{ topicsData: Discussion[] }> = () => {
-  const [topicsData, setDiscussions] = React.useState<Discussion[] | null>(
-    null
-  );
+const TopicsPage: NextPage = () => {
+  const [topicsData, setTopicData] = React.useState<Discussion[] | null>(null);
 
   const NewTopics = () => {
     if (topicsData === null) {
@@ -23,7 +21,7 @@ const TopicsPage: NextPage<{ topicsData: Discussion[] }> = () => {
     }
     return <Discussions discussions={topicsData} in_firestore={true} />;
   };
-
+  console.log(topicsData);
   React.useEffect(() => {
     const fetchData = async () => {
       const app = initializeApp(firebaseConfig);
@@ -35,11 +33,14 @@ const TopicsPage: NextPage<{ topicsData: Discussion[] }> = () => {
         createdAt: doc.data().createdAt.toDate().toISOString(),
       })) as Discussion[];
 
-      setDiscussions(topicsData);
+      setTopicData(topicsData);
+      console.log(topicsData);
     };
 
-    fetchData();
-  }, [topicsData]);
+    // temporary stop
+    // fetchData();
+  });
+
   return (
     <>
       <Head>
@@ -62,6 +63,7 @@ const TopicsPage: NextPage<{ topicsData: Discussion[] }> = () => {
           </Link>
           . Want to add your topic? Visit {AddTopic}.
         </p>
+        <NewTopics />
         <Discussions discussions={discussions} in_firestore={false} />
       </div>
     </>
