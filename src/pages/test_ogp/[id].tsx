@@ -1,70 +1,49 @@
 // read data from firestore
-import { useRouter } from "next/router";
 import Head from "next/head";
-import { GetStaticProps, GetStaticPaths } from "next";
-import {
-  getFirestore,
-  collection,
-  getDoc,
-  getDocs,
-  doc,
-  query,
-  where,
-} from "firebase/firestore";
 
 import "../../app/globals.css";
 import { takeOpinion } from "../../lib/takeOpinion";
 import { Navigation } from "../../components/Navigation";
 import { DiscussionView } from "../../components/DiscussionView";
-import { Discussion } from "@/lib/data";
-import { firebaseConfig } from "@/lib/firestore_app";
-import { initializeApp } from "firebase/app";
+import { Discussion, discussions } from "@/lib/data";
 import { generate_svg } from "../../lib/generate_svg";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = [] as { params: { id: string } }[];
-  const app = initializeApp(firebaseConfig);
-  const firestore = getFirestore(app);
-  const querySnapshot = await getDocs(collection(firestore, "topics"));
-  querySnapshot.forEach((doc) => {
-    paths.push({ params: { id: doc.id } });
-  });
-  // console.log(paths);
-  return { paths, fallback: "blocking" };
+  const paths = discussions.map((discussion) => ({
+    params: { id: discussion.id },
+  }));
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id_ = context.params?.id;
-  // if id is undefined, redirect to root page
-  if (id_ === undefined) {
-    return { redirect: { destination: "/", permanent: false } };
-  }
-  // if multiple ids are passed, use the first one
-  const id = Array.isArray(id_) ? id_[0] : id_;
-  // console.log({ id });
-
-  const app = initializeApp(firebaseConfig);
-  const firestore = getFirestore(app);
-  const docRef = doc(firestore, "topics", id);
-  // console.log(docRef);
-  const docSnap = await getDoc(docRef);
-  if (!docSnap.exists()) {
+  const id = context.params?.id;
+  if (typeof id !== "string") {
     return { notFound: true };
   }
-  // console.log(docSnap);
-
-  const discussion = docSnap.data();
-  discussion.createdAt = discussion.createdAt.toDate().toISOString();
-  // console.log({ discussion });
-  return { props: { discussion } };
-};
-
-const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
-  // console.log({ discussion });
+  const discussion = discussions.find((d) => d.id === id);
+  if (!discussion) {
+    return { notFound: true };
+  }
   const content = `${discussion.topic}(${discussion.viewpoints
     .map((v) => takeOpinion(v.text).text)
     .join("/")})`;
   const title = `⿻${content}`;
+  return { props: { id, content, title, discussion } };
+};
+
+const DiscussionPage = ({
+  id,
+  content,
+  title,
+  discussion,
+}: {
+  id: string;
+  content: string;
+  title: string;
+  discussion: Discussion;
+}) => {
+  console.log({ id });
 
   const copySvgToClipboard = () => {
     const svgElement = document.getElementById("ogp-image")!;
@@ -84,6 +63,10 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
     document.body.removeChild(downloadLink);
   };
 
+  const copyButton = (
+    <button onClick={copySvgToClipboard}>Copy SVG to Clipboard</button>
+  );
+
   return (
     <>
       <Head>
@@ -100,6 +83,9 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
           <hr className="border-gray-400" />
           <Navigation />
         </div>
+        <h2>OGP Image</h2>
+        {copyButton}
+        {generate_svg(discussion)}
       </div>
     </>
   );
