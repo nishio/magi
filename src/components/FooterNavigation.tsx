@@ -4,7 +4,7 @@ export const FooterNavigation = () => {
   return (
     <>
       {/* footer */}
-      <hr className="border-gray-400" />
+      <hr className="border-gray-400 mt-4" />
       <Link href="/" className="text-blue-300 hover:text-blue-500">
         About
       </Link>
