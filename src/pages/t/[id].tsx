@@ -20,6 +20,7 @@ import { Discussion } from "@/lib/data";
 import { firebaseConfig } from "@/lib/firestore_app";
 import { initializeApp } from "firebase/app";
 import { generate_svg } from "../../lib/generate_svg";
+import { FooterNavigation } from "@/components/FooterNavigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as { params: { id: string } }[];
@@ -97,8 +98,7 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
         <div className="md:mx-4 md:my-4">
           <Navigation />
           <DiscussionView discussion={discussion} />
-          <hr className="border-gray-400" />
-          <Navigation />
+          <FooterNavigation />
         </div>
       </div>
     </>

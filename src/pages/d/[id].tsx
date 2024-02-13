@@ -8,6 +8,7 @@ import "../../app/globals.css";
 import { takeOpinion } from "../../lib/takeOpinion";
 import { Navigation } from "../../components/Navigation";
 import { DiscussionView } from "../../components/DiscussionView";
+import { FooterNavigation } from "../../components/FooterNavigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = discussions.map((discussion) => ({
@@ -43,8 +44,7 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
         <div className="md:mx-4 md:my-4">
           <Navigation />
           <DiscussionView discussion={discussion} />
-          <hr className="border-gray-400" />
-          <Navigation />
+          <FooterNavigation />
         </div>
       </div>
     </>
