@@ -60,6 +60,15 @@ export default function Home() {
     </a>
   );
 
+  const Forum3 = (
+    <a
+      href="https://github.com/nishio/magi/discussions/4"
+      className="text-blue-300 hover:text-blue-500 underline"
+    >
+      the forum
+    </a>
+  );
+
   const LinkToTopics = (title: string) => {
     return (
       <Link
@@ -136,7 +145,11 @@ export default function Home() {
         when all three respondents are in the same direction, and weak consensus
         when some are neutral.
       </p>
-
+      <p className="p">
+        Even if AI charecters reached a consensus, it is only a provisional
+        solution at this point. If you have any objections to the consensus
+        reached by AI characters, please feel free to post them in {Forum3}!
+      </p>
       <h2
         className="text-4xl font-bold mt-4"
         id="political-ideologies-for-the-21st-century"
