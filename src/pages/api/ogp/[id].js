@@ -1,4 +1,4 @@
-import { generate_svg } from "../../t/generate_svg";
+import { generate_svg } from "../../../lib/generate_svg";
 import { discussions } from "@/lib/data"; // Assuming this function exists for fetching discussion data by ID
 import { renderToStaticMarkup } from "react-dom/server";
 import sharp from "sharp";

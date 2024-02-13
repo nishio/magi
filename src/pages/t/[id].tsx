@@ -19,7 +19,7 @@ import { DiscussionView } from "../../components/DiscussionView";
 import { Discussion } from "@/lib/data";
 import { firebaseConfig } from "@/lib/firestore_app";
 import { initializeApp } from "firebase/app";
-import { generate_svg } from "./generate_svg";
+import { generate_svg } from "../../lib/generate_svg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as { params: { id: string } }[];
