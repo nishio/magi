@@ -53,7 +53,8 @@ export const generate_svg = (discussion: Discussion) => {
   const vs = discussion.viewpoints.map((v) => takeOpinion(v.text).v);
 
   const jalabel = vs.map((v) => v_to_jalabel(v));
-  const width = "700";
+  // const width = "700";
+  const width = "1200";
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -150,72 +151,70 @@ export const generate_svg = (discussion: Discussion) => {
           <rect width={width} height="630" />
         </clipPath>
       </defs>
-      <g
-        id="アートボード_2"
-        data-name="アートボード – 2"
-        clip-path="url(#clip)"
-      >
+      <g id="アートボード_2" clip-path="url(#clip)">
         {/* <rect width="1200" height="630" /> */}
-        <rect width={width} height="630" />
+        <rect width={width} height="630" fill="#000000" />
         {/* {PROMPT_BOX(discussion)} */}
-        <path
-          id="楕円形_1"
-          d="M110,30a80,80,0,1,0,80,80,80.091,80.091,0,0,0-80-80m0-30A110,110,0,1,1,0,110,110,110,0,0,1,110,0Z"
-          transform="translate(248 223)"
-          fill="#ff8902"
-        />
-        {TOP_UNIT(discussion)}
-        {LEFT_UNIT(discussion)}
-        {RIGHT_UNIT(discussion)}
+        <g transform="translate(262, 0)">
+          <path
+            id="楕円形_1"
+            d="M110,30a80,80,0,1,0,80,80,80.091,80.091,0,0,0-80-80m0-30A110,110,0,1,1,0,110,110,110,0,0,1,110,0Z"
+            transform="translate(248 223)"
+            fill="#ff8902"
+          />
+          {TOP_UNIT(discussion)}
+          {LEFT_UNIT(discussion)}
+          {RIGHT_UNIT(discussion)}
 
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#RIGHT_LABEL)">
-          <text
-            id="否定-2"
-            transform="translate(558.59 550.09)"
-            font-size="40"
-            font-family="HiraMinProN-W6, Hiragino Mincho ProN"
-          >
-            <tspan x="-80" y="0">
-              {jalabel[2]}
-            </tspan>
-          </text>
+          {/* <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#RIGHT_LABEL)">
+            <text
+              id="否定-2"
+              transform="translate(558.59 550.09)"
+              font-size="40"
+              font-family="HiraMinProN-W6, Hiragino Mincho ProN"
+            >
+              <tspan x="-80" y="0">
+                {jalabel[2]}
+              </tspan>
+            </text>
+          </g>
+
+          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#LEFT_LABEL)">
+            <text
+              id="中立-2"
+              data-name="中立"
+              transform="translate(236.66 550.09)"
+              font-size="40"
+              font-family="HiraMinProN-W6, Hiragino Mincho ProN"
+            >
+              <tspan x="-80" y="0">
+                {jalabel[1]}
+              </tspan>
+            </text>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#TOP_LABEL)">
+            <text
+              id="承認-3"
+              data-name="承認"
+              transform="translate(399 292)"
+              font-size="40"
+              font-family="HiraMinProN-W6, Hiragino Mincho ProN"
+            >
+              <tspan x="-80" y="0">
+                {jalabel[0]}
+              </tspan>
+            </text>
+          </g> */}
+
+          {/* {FIRST_BOX(discussion)} */}
+
+          {/* {SECOND_BOX(discussion)} */}
+
+          {/* {BOTTOM_BOX(discussion)} */}
+
+          {HORIZONTAL_LOGO}
+          {POSITIVE_NEUTRAL_NEGATIVE}
         </g>
-
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#LEFT_LABEL)">
-          <text
-            id="中立-2"
-            data-name="中立"
-            transform="translate(236.66 550.09)"
-            font-size="40"
-            font-family="HiraMinProN-W6, Hiragino Mincho ProN"
-          >
-            <tspan x="-80" y="0">
-              {jalabel[1]}
-            </tspan>
-          </text>
-        </g>
-        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#TOP_LABEL)">
-          <text
-            id="承認-3"
-            data-name="承認"
-            transform="translate(399 292)"
-            font-size="40"
-            font-family="HiraMinProN-W6, Hiragino Mincho ProN"
-          >
-            <tspan x="-80" y="0">
-              {jalabel[0]}
-            </tspan>
-          </text>
-        </g>
-
-        {/* {FIRST_BOX(discussion)} */}
-
-        {/* {SECOND_BOX(discussion)} */}
-
-        {/* {BOTTOM_BOX(discussion)} */}
-
-        {HORIZONTAL_LOGO}
-        {POSITIVE_NEUTRAL_NEGATIVE}
       </g>
     </svg>
   );
