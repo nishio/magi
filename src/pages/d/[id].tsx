@@ -43,6 +43,17 @@ const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
           property="og:image"
           content={`https://magi-nishio.vercel.app/api/ogp/${discussion.id}`}
         />
+        <meta
+          property="og:url"
+          content={`https://magi-nishio.vercel.app/d/${discussion.id}`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={content} />
+        <meta
+          name="twitter:image"
+          content={`https://magi-nishio.vercel.app/api/ogp/${discussion.id}`}
+        />
       </Head>
       <div className="bg-slate-800 text-white min-h-screen">
         <div className="md:mx-4 md:my-4">
