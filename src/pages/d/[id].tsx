@@ -9,6 +9,8 @@ import { takeOpinion } from "../../lib/takeOpinion";
 import { Navigation } from "../../components/Navigation";
 import { DiscussionView } from "../../components/DiscussionView";
 import { FooterNavigation } from "../../components/FooterNavigation";
+import { getConsensusString } from "@/components/Consensus";
+import { YesNoEmoji } from "@/components/YesNoEmoji";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = discussions.map((discussion) => ({
@@ -27,10 +29,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
-  const content = `${discussion.topic}(${discussion.viewpoints
-    .map((v) => takeOpinion(v.text).text)
-    .join("/")})`;
-  const title = `⿻${content}`;
+  const emojis = discussion.viewpoints
+    .map((v) => YesNoEmoji(takeOpinion(v.text)))
+    .join("");
+  const title = `⿻${emojis}: ${discussion.topic}`;
+  const concensus = getConsensusString({ discussion });
+  const content = `${concensus}`;
   return (
     <>
       <Head>
