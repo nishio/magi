@@ -17,11 +17,20 @@ const TopicsPage: NextPage = () => {
 
   const NewTopics = () => {
     if (topicsData === null) {
-      return <div>loading latest topics...</div>;
+      return (
+        <div>
+          <span className="animate-spin">🤔</span> loading latest topics...
+        </div>
+      );
     }
-    return <Discussions discussions={topicsData} in_firestore={true} />;
+    return (
+      <>
+        <div>✅ loaded latest topics</div>
+        <Discussions discussions={topicsData} in_firestore={true} />
+      </>
+    );
   };
-  console.log(topicsData);
+
   React.useEffect(() => {
     const fetchData = async () => {
       const app = initializeApp(firebaseConfig);
@@ -34,12 +43,10 @@ const TopicsPage: NextPage = () => {
       })) as Discussion[];
 
       setTopicData(topicsData);
-      console.log(topicsData);
     };
 
-    // temporary stop
-    // fetchData();
-  });
+    fetchData();
+  }, []);
 
   return (
     <>
