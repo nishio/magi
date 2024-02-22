@@ -8,8 +8,6 @@ import {
   getDoc,
   getDocs,
   doc,
-  query,
-  where,
 } from "firebase/firestore";
 
 import "../../app/globals.css";
@@ -19,8 +17,8 @@ import { DiscussionView } from "../../components/DiscussionView";
 import { Discussion } from "@/lib/data";
 import { firebaseConfig } from "@/lib/firestore_app";
 import { initializeApp } from "firebase/app";
-import { generate_svg } from "../../lib/generate_svg";
 import { FooterNavigation } from "@/components/FooterNavigation";
+import { DiscussionHead } from "@/components/DiscussionHead";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as { params: { id: string } }[];
@@ -61,39 +59,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
-  // console.log({ discussion });
-  const content = `${discussion.topic}(${discussion.viewpoints
-    .map((v) => takeOpinion(v.text).text)
-    .join("/")})`;
-  const title = `⿻${content}`;
-
-  const copySvgToClipboard = () => {
-    const svgElement = document.getElementById("ogp-image")!;
-    svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    const svgData = svgElement.outerHTML;
-    const svgBlob = new Blob([svgData], {
-      type: "image/svg+xml;charset=utf-8",
-    });
-    const URL = window.URL || window.webkitURL || window;
-    const svgUrl = URL.createObjectURL(svgBlob);
-
-    const downloadLink = document.createElement("a");
-    downloadLink.href = svgUrl;
-    downloadLink.download = "discussion.svg";
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  };
-
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={content} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={content} />
-        <meta property="og:type" content="article" />
-      </Head>
+      <DiscussionHead discussion={discussion} />{" "}
       <div className="bg-slate-800 text-white min-h-screen">
         <div className="md:mx-4 md:my-4">
           <Navigation />

@@ -1,16 +1,13 @@
 // magi/src/pages/d/[id].tsx
 import { useRouter } from "next/router";
 import { Discussion, discussions } from "../../lib/data"; // Adjust the import path as necessary
-import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 import "../../app/globals.css";
-import { takeOpinion } from "../../lib/takeOpinion";
 import { Navigation } from "../../components/Navigation";
 import { DiscussionView } from "../../components/DiscussionView";
 import { FooterNavigation } from "../../components/FooterNavigation";
-import { getConsensusString } from "@/components/Consensus";
-import { YesNoEmoji } from "@/components/YesNoEmoji";
+import { DiscussionHead } from "../../components/DiscussionHead";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = discussions.map((discussion) => ({
@@ -29,36 +26,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const DiscussionPage = ({ discussion }: { discussion: Discussion }) => {
-  const emojis = discussion.viewpoints
-    .map((v) => YesNoEmoji(takeOpinion(v.text)))
-    .join("");
-  const title = `⿻${emojis}: ${discussion.topic}`;
-  const concensus = getConsensusString({ discussion });
-  const content = `${concensus}`;
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={content} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={content} />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:image"
-          content={`https://magi-nishio.vercel.app/api/ogp/${discussion.id}`}
-        />
-        <meta
-          property="og:url"
-          content={`https://magi-nishio.vercel.app/d/${discussion.id}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={content} />
-        <meta
-          name="twitter:image"
-          content={`https://magi-nishio.vercel.app/api/ogp/${discussion.id}`}
-        />
-      </Head>
+      <DiscussionHead discussion={discussion} />
       <div className="bg-slate-800 text-white min-h-screen">
         <div className="md:mx-4 md:my-4">
           <Navigation />

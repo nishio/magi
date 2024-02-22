@@ -1,4 +1,4 @@
-export const YesNoEmoji = ({ v }: { v: number }) => {
+export const getYesNoEmoji = ({ v }: { v: number }) => {
   let emoji;
   if (v === 2) {
     emoji = "👍"; // Strong Yes
