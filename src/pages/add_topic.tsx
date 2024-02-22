@@ -80,6 +80,8 @@ export default function AddTopic() {
   };
 
   const submitTopic = () => {
+    setResult("");
+    setUrl("");
     setState1("running");
     setState2("running");
     setState3("running");
