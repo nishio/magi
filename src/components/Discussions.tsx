@@ -12,16 +12,18 @@ export const Discussions = ({
 }) => {
   const prefix = in_firestore ? "t" : "d";
   const listItems = discussions.map((discussion) => (
-    <li key={discussion.id}>
+    <li key={discussion.id} className="my-2">
       <Link
         href={`/${prefix}/${discussion.id}`}
         className="text-blue-300 hover:text-blue-500 underline"
       >
         {discussion.topic}
       </Link>
-      <YesNoSpan v={takeOpinion(discussion.viewpoints[0].text).v} />
-      <YesNoSpan v={takeOpinion(discussion.viewpoints[1].text).v} />
-      <YesNoSpan v={takeOpinion(discussion.viewpoints[2].text).v} />
+      <p>
+        <YesNoSpan v={takeOpinion(discussion.viewpoints[0].text).v} />
+        <YesNoSpan v={takeOpinion(discussion.viewpoints[1].text).v} />
+        <YesNoSpan v={takeOpinion(discussion.viewpoints[2].text).v} />
+      </p>
     </li>
   ));
 
