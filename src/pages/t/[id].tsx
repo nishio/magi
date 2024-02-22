@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const discussion = docSnap.data();
   discussion.createdAt = discussion.createdAt.toDate().toISOString();
+  discussion.id = id;
   // console.log({ discussion });
   return { props: { discussion } };
 };
