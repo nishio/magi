@@ -3,6 +3,7 @@ import { takeOpinion } from "../lib/takeOpinion";
 import { YesNo } from "./YesNo";
 import { Consensus } from "./Consensus";
 import { BackToTop } from "./BackToTop";
+import Image from "next/image";
 
 export const DiscussionView = ({ discussion }: { discussion: Discussion }) => {
   return (
@@ -35,6 +36,15 @@ export const DiscussionView = ({ discussion }: { discussion: Discussion }) => {
             <BackToTop />
           </div>
         ))}
+      </div>
+      {/* OGP Image: fill width image */}
+      <div className="flex justify-center">
+        <Image
+          src={`/api/ogp/${discussion.id}`}
+          alt=""
+          width={1200}
+          height={630}
+        />
       </div>
     </>
   );
