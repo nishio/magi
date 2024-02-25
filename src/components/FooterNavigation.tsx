@@ -12,6 +12,10 @@ export const FooterNavigation = () => {
       <Link href="/topics" className="text-blue-300 hover:text-blue-500">
         Other Topics
       </Link>
+      {" / "}
+      <Link href="/add_topic" className="text-blue-300 hover:text-blue-500">
+        Add Topic
+      </Link>
     </>
   );
 };
