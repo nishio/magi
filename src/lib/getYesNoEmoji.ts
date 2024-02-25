@@ -1,15 +1,15 @@
 export const getYesNoEmoji = ({ v }: { v: number }) => {
   let emoji;
   if (v === 2) {
-    emoji = "👍"; // Strong Yes
+    emoji = "😄"; // Strong Yes
   } else if (v === 1) {
-    emoji = "👍"; // Yes
+    emoji = "😀"; // Yes
   } else if (v === 0) {
     emoji = "😐"; // Neutral
   } else if (v === -1) {
-    emoji = "👎"; // No
+    emoji = "😧"; // No
   } else if (v === -2) {
-    emoji = "👎"; // Strong No
+    emoji = "😩"; // Strong No
   } else {
     emoji = "🤕"; // Default to error emoji if value not found
   }

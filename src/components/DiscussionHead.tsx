@@ -8,8 +8,8 @@ export const DiscussionHead = ({ discussion }: { discussion: Discussion }) => {
   const emojis = discussion.viewpoints
     .map((v) => getYesNoEmoji(takeOpinion(v.text)))
     .join("");
-  const title = `⿻${emojis}: ${discussion.topic}`;
   const concensus = getConsensusString({ discussion });
+  const title = `⿻${emojis}←❓${discussion.topic}`;
   const content = `${concensus}`;
 
   return (
