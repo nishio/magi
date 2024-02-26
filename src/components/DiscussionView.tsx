@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Discussion } from "../lib/data";
 import { takeOpinion } from "../lib/takeOpinion";
 import { YesNo } from "./YesNo";
@@ -39,7 +40,7 @@ export const DiscussionView = ({ discussion }: { discussion: Discussion }) => {
       </div>
       {/* OGP Image: fill width image */}
       <div className="flex justify-center">
-        <Image
+        <img
           src={`/api/ogp/${discussion.id}`}
           alt=""
           width={1200}
